@@ -7,9 +7,21 @@
     maxPrice?: number;
   }
 
+  interface MenuLabels {
+    title: string;
+    clearAll: string;
+    brand: string;
+    category: string;
+    allBrands: string;
+    allCategories: string;
+    maxPrice: string;
+    anyPrice: string;
+  }
+
   interface Props {
     placeholder: string;
     filterLabel: string;
+    menuLabels: MenuLabels;
     brands?: string[];
     categories?: string[];
     onSearch?: (query: string) => void;
@@ -19,6 +31,7 @@
   let {
     placeholder,
     filterLabel,
+    menuLabels,
     brands = [],
     categories = [],
     onSearch,
@@ -118,13 +131,13 @@
     >
       <div class="flex flex-col gap-5">
         <div class="flex items-center justify-between">
-          <h3 class="text-label-sm font-black text-on-surface uppercase tracking-widest">Filters</h3>
+          <h3 class="text-label-sm font-black text-on-surface uppercase tracking-widest">{menuLabels.title}</h3>
           {#if hasActiveFilters}
             <button
               onclick={clearFilters}
               class="text-body-xs font-bold text-primary hover:text-primary/80 transition-colors"
             >
-              Clear All
+              {menuLabels.clearAll}
             </button>
           {/if}
         </div>
@@ -135,7 +148,7 @@
             for="filter-brand"
             class="text-body-xs font-black text-on-surface-variant uppercase tracking-tighter opacity-70"
           >
-            Brand
+            {menuLabels.brand}
           </label>
           <select
             id="filter-brand"
@@ -143,7 +156,7 @@
             onchange={(e) => updateFilter('brand', (e.target as HTMLSelectElement).value)}
             class="w-full bg-surface-container-highest/40 border border-white/10 rounded-xl px-4 py-2.5 text-body-sm text-on-surface outline-none focus:border-primary/50 transition-all cursor-pointer appearance-none"
           >
-            <option value="">All Brands</option>
+            <option value="">{menuLabels.allBrands}</option>
             {#each brands as b (b)}
               <option value={b}>{b}</option>
             {/each}
@@ -156,7 +169,7 @@
             for="filter-category"
             class="text-body-xs font-black text-on-surface-variant uppercase tracking-tighter opacity-70"
           >
-            Category
+            {menuLabels.category}
           </label>
           <select
             id="filter-category"
@@ -164,7 +177,7 @@
             onchange={(e) => updateFilter('category', (e.target as HTMLSelectElement).value)}
             class="w-full bg-surface-container-highest/40 border border-white/10 rounded-xl px-4 py-2.5 text-body-sm text-on-surface outline-none focus:border-primary/50 transition-all cursor-pointer appearance-none"
           >
-            <option value="">All Categories</option>
+            <option value="">{menuLabels.allCategories}</option>
             {#each categories as c (c)}
               <option value={c}>{c}</option>
             {/each}
@@ -177,12 +190,12 @@
             for="filter-price"
             class="text-body-xs font-black text-on-surface-variant uppercase tracking-tighter opacity-70"
           >
-            Max Price ($/day)
+            {menuLabels.maxPrice}
           </label>
           <input
             id="filter-price"
             type="number"
-            placeholder="Any price"
+            placeholder={menuLabels.anyPrice}
             value={filters.maxPrice || ''}
             oninput={(e) => {
               const v = (e.target as HTMLInputElement).value;

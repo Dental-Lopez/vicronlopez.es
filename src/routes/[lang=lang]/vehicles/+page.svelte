@@ -45,6 +45,16 @@
         labels={{
           placeholder: data.t.hero.searchPlaceholder,
           filterLabel: data.t.hero.filterLabel,
+          menuLabels: {
+            title: data.t.filters.title,
+            clearAll: data.t.filters.clearAll,
+            brand: data.t.filters.brand,
+            category: data.t.filters.category,
+            allBrands: data.t.filters.allBrands,
+            allCategories: data.t.filters.allCategories,
+            maxPrice: data.t.filters.maxPrice,
+            anyPrice: data.t.filters.anyPrice,
+          },
           filters: [
             { label: data.t.filters.electric, value: 'electric' },
             { label: data.t.filters.suv, value: 'suv' },

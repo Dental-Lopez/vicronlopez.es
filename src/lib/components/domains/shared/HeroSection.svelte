@@ -40,6 +40,16 @@
           {locale}
           placeholder={t.hero.searchPlaceholder}
           filterLabel={t.hero.filterLabel}
+          menuLabels={{
+            title: t.filters.title,
+            clearAll: t.filters.clearAll,
+            brand: t.filters.brand,
+            category: t.filters.category,
+            allBrands: t.filters.allBrands,
+            allCategories: t.filters.allCategories,
+            maxPrice: t.filters.maxPrice,
+            anyPrice: t.filters.anyPrice,
+          }}
           noResults={t.filters.noResults}
           noResultsHint={t.filters.noResultsHint}
           perDay={t.vehicles.perDay}

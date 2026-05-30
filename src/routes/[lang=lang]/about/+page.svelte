@@ -19,19 +19,19 @@
     { icon: 'speed', title: data.t.about.value3Title, body: data.t.about.value3Body, bgColor: 'bg-surface-container-high', textColor: 'text-primary' },
   ]);
 
-  const timeline = [
-    { year: '2015', title: 'Inception', body: 'Founded with a vision to merge software precision with automotive engineering.', active: true },
-    { year: '2018', title: 'First Prototype', body: 'The V1 Alpha concept is unveiled, demonstrating autonomous capabilities.', active: false },
-    { year: '2021', title: 'Global Expansion', body: 'Operations expand to Europe and Asia, establishing a global design language.', active: false },
-    { year: '2024', title: 'The Aura Era', body: 'Launch of our flagship mobility platform, redefining luxury transport.', active: false },
-  ];
+  const timeline = $derived(
+    data.t.about.timeline.map((item, i) => ({ ...item, active: i === 0 }))
+  );
 
-  const team = [
-    { name: 'Elena Rostova', role: 'Chief Executive Officer', image: '/assets/images/about/elena-rostova.webp' },
-    { name: 'Marcus Chen', role: 'Chief Technology Officer', image: '/assets/images/about/marcus-chen.webp' },
-    { name: 'Julian Hayes', role: 'Head of Design', image: '/assets/images/about/julian-hayes.webp' },
-    { name: 'Sarah Jenkins', role: 'Chief Operations Officer', image: '/assets/images/about/sarah-jenkins.webp' },
+  const teamMembers = [
+    { name: 'Elena Rostova', image: '/assets/images/about/elena-rostova.webp' },
+    { name: 'Marcus Chen', image: '/assets/images/about/marcus-chen.webp' },
+    { name: 'Julian Hayes', image: '/assets/images/about/julian-hayes.webp' },
+    { name: 'Sarah Jenkins', image: '/assets/images/about/sarah-jenkins.webp' },
   ];
+  const team = $derived(
+    teamMembers.map((member, i) => ({ ...member, role: data.t.about.roles[i] }))
+  );
 </script>
 
 <svelte:head>
@@ -110,7 +110,7 @@
   <!-- Timeline -->
   <section class="py-xl px-8 bg-surface-container-lowest">
     <div class="max-w-screen-xl mx-auto">
-      <h2 class="font-display text-[32px] md:text-[40px] font-bold text-on-surface text-center mb-16">The Journey</h2>
+      <h2 class="font-display text-[32px] md:text-[40px] font-bold text-on-surface text-center mb-16">{data.t.about.timelineTitle}</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {#each timeline as item}
           <div class="relative pl-6 border-l border-outline-variant/30 group">
@@ -127,7 +127,7 @@
   <!-- Team -->
   <section class="py-xl px-8 bg-background">
     <div class="max-w-screen-xl mx-auto">
-      <h2 class="font-display text-[32px] md:text-[40px] font-bold text-on-surface text-center mb-16">Leadership</h2>
+      <h2 class="font-display text-[32px] md:text-[40px] font-bold text-on-surface text-center mb-16">{data.t.about.teamTitle}</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {#each team as member}
           <div class="text-center group">

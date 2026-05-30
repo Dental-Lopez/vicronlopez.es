@@ -17,6 +17,16 @@
   interface VehicleHubLabels {
     placeholder: string;
     filterLabel: string;
+    menuLabels: {
+      title: string;
+      clearAll: string;
+      brand: string;
+      category: string;
+      allBrands: string;
+      allCategories: string;
+      maxPrice: string;
+      anyPrice: string;
+    };
     filters: Array<{ label: string; value: string }>;
     noResults: string;
     clearFilters: string;
@@ -83,6 +93,7 @@
     <SearchPill
       placeholder={labels.placeholder}
       filterLabel={labels.filterLabel}
+      menuLabels={labels.menuLabels}
       {brands}
       {categories}
       onSearch={(q) => { query = q; }}

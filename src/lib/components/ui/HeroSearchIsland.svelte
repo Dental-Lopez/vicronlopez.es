@@ -25,6 +25,16 @@
     locale: string;
     placeholder: string;
     filterLabel: string;
+    menuLabels: {
+      title: string;
+      clearAll: string;
+      brand: string;
+      category: string;
+      allBrands: string;
+      allCategories: string;
+      maxPrice: string;
+      anyPrice: string;
+    };
     noResults: string;
     noResultsHint: string;
     perDay: string;
@@ -36,6 +46,7 @@
     locale,
     placeholder,
     filterLabel,
+    menuLabels,
     noResults,
     noResultsHint,
     perDay,
@@ -102,6 +113,7 @@
     <SearchPill
       {placeholder}
       {filterLabel}
+      {menuLabels}
       {brands}
       {categories}
       onSearch={(q) => {

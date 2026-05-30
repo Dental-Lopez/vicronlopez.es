@@ -79,6 +79,12 @@ export const en = {
     noResults: 'No vehicles match your filters.',
     noResultsHint: 'Try adjusting or clearing your filters.',
     filterBy: 'Filter by',
+    title: 'Filters',
+    clearAll: 'Clear All',
+    allBrands: 'All Brands',
+    allCategories: 'All Categories',
+    maxPrice: 'Max Price ($/day)',
+    anyPrice: 'Any price',
   },
   vehicles: {
     featuredInventory: 'Featured Inventory',
@@ -200,6 +206,20 @@ export const en = {
     commitmentBody:
       'From the first inquiry to the final handover, we stand by every vehicle, every rental, every time.',
     commitmentCta: 'Get in Touch',
+    timelineTitle: 'The Journey',
+    timeline: [
+      { year: '2015', title: 'Inception', body: 'Founded with a vision to merge software precision with automotive engineering.' },
+      { year: '2018', title: 'First Prototype', body: 'The V1 Alpha concept is unveiled, demonstrating autonomous capabilities.' },
+      { year: '2021', title: 'Global Expansion', body: 'Operations expand to Europe and Asia, establishing a global design language.' },
+      { year: '2024', title: 'The Aura Era', body: 'Launch of our flagship mobility platform, redefining luxury transport.' },
+    ],
+    teamTitle: 'Leadership',
+    roles: [
+      'Chief Executive Officer',
+      'Chief Technology Officer',
+      'Head of Design',
+      'Chief Operations Officer',
+    ],
   },
   legal: {
     privacyTitle: 'Privacy Policy',

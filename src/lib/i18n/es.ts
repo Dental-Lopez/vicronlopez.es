@@ -81,6 +81,12 @@ export const es: Dictionary = {
     noResults: 'Ningún vehículo coincide con tus filtros.',
     noResultsHint: 'Intentá ajustar o limpiar los filtros.',
     filterBy: 'Filtrar por',
+    title: 'Filtros',
+    clearAll: 'Limpiar todo',
+    allBrands: 'Todas las marcas',
+    allCategories: 'Todas las categorías',
+    maxPrice: 'Precio máx. ($/día)',
+    anyPrice: 'Cualquier precio',
   },
   vehicles: {
     featuredInventory: 'Inventario Destacado',
@@ -202,6 +208,20 @@ export const es: Dictionary = {
     commitmentBody:
       'Desde la primera consulta hasta la entrega final, respaldamos cada vehículo, cada alquiler, siempre.',
     commitmentCta: 'Contactanos',
+    timelineTitle: 'La Trayectoria',
+    timeline: [
+      { year: '2015', title: 'Los Comienzos', body: 'Fundada con la visión de unir la precisión del software con la ingeniería automotriz.' },
+      { year: '2018', title: 'Primer Prototipo', body: 'Se presenta el concepto V1 Alpha, demostrando capacidades autónomas.' },
+      { year: '2021', title: 'Expansión Global', body: 'Las operaciones se expanden a Europa y Asia, estableciendo un lenguaje de diseño global.' },
+      { year: '2024', title: 'La Era Aura', body: 'Lanzamiento de nuestra plataforma de movilidad insignia, redefiniendo el transporte de lujo.' },
+    ],
+    teamTitle: 'Liderazgo',
+    roles: [
+      'Directora Ejecutiva',
+      'Director de Tecnología',
+      'Director de Diseño',
+      'Directora de Operaciones',
+    ],
   },
   legal: {
     privacyTitle: 'Política de Privacidad',
