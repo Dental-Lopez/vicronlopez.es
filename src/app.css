@@ -234,6 +234,10 @@
     line-height: 1;
     display: inline-block;
     vertical-align: middle;
+    /* Ligatures resolve on the lowercase icon name; an inherited
+       text-transform/letter-spacing breaks the match and renders the raw word. */
+    text-transform: none;
+    letter-spacing: normal;
   }
 
   .material-symbols-outlined.filled {
