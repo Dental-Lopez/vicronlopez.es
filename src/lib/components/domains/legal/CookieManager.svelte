@@ -96,7 +96,7 @@
                 </span>
               {/if}
             </div>
-            <p class="text-sm text-on-surface-variant max-w-xl">
+            <p class="text-sm text-on-surface-variant max-w-prose">
               {cat.description}
             </p>
           </div>
