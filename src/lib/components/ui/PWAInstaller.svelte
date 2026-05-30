@@ -72,16 +72,14 @@
 
 <div
   id="pwa-installer"
-  class="w-full md:w-[450px] transition-all duration-500 ease-out overflow-hidden"
-  class:translate-y-full={!visible}
-  class:opacity-0={!visible}
-  class:pointer-events-none={!visible}
-  class:max-h-0={!visible}
-  class:translate-y-0={visible}
-  class:opacity-100={visible}
-  class:max-h-[500px]={visible}
+  class="w-full md:w-[450px] transition-[transform,opacity,display] transition-discrete duration-500 ease-out
+         translate-y-full opacity-0 pointer-events-none hidden
+         starting:translate-y-full starting:opacity-0
+         motion-reduce:transition-none
+         [&.is-visible]:block [&.is-visible]:translate-y-0 [&.is-visible]:opacity-100 [&.is-visible]:pointer-events-auto"
+  class:is-visible={visible}
   role="complementary"
-  style="will-change: max-height, transform, opacity;"
+  style="will-change: transform, opacity;"
 >
   <div class="bg-surface-container-high/95 backdrop-blur-3xl border border-outline-variant/30 rounded-3xl p-5 md:p-6 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.4)] flex items-center gap-5 overflow-hidden relative group">
     <!-- Glow effect -->

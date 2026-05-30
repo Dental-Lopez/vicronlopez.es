@@ -31,16 +31,14 @@
 
 <div
   id="cookie-banner"
-  class="w-full transition-all duration-500 ease-out overflow-hidden"
-  class:translate-y-full={!visible}
-  class:opacity-0={!visible}
-  class:pointer-events-none={!visible}
-  class:max-h-0={!visible}
-  class:translate-y-0={visible}
-  class:opacity-100={visible}
-  class:max-h-[500px]={visible}
+  class="w-full transition-[transform,opacity,display] transition-discrete duration-500 ease-out
+         translate-y-full opacity-0 pointer-events-none hidden
+         starting:translate-y-full starting:opacity-0
+         motion-reduce:transition-none
+         [&.is-visible]:block [&.is-visible]:translate-y-0 [&.is-visible]:opacity-100 [&.is-visible]:pointer-events-auto"
+  class:is-visible={visible}
   role="alert"
-  style="will-change: max-height, transform, opacity;"
+  style="will-change: transform, opacity;"
 >
   <div class="max-w-7xl mx-auto">
     <div class="bg-surface-container-high/95 backdrop-blur-3xl border border-outline-variant/30 rounded-2xl p-6 md:p-8 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative group">
