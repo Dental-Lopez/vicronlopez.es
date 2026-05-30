@@ -29,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Blank page in `vite dev` caused by a `@sveltejs/vite-plugin-svelte` v5 / Vite 7 mismatch (the plugin upgrade to v6 resolves the corrupted dependency optimization).
-- Cloudflare deployment check failure by creating `wrangler.toml` and generating `worker-configuration.d.ts` definitions.
+- Cloudflare deployment check failure by creating `wrangler.toml` with `assets` settings and generating `worker-configuration.d.ts` definitions.
 
 ### Removed
 
