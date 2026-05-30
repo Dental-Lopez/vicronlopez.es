@@ -5,28 +5,22 @@
 
   interface Props {
     locale: Locale;
+    visible?: boolean;
+    height?: number;
+    bottomOffset?: number;
   }
 
-  let { locale }: Props = $props();
+  let {
+    locale,
+    visible = $bindable(false),
+    height = $bindable(0),
+    bottomOffset = 24
+  }: Props = $props();
   const t = $derived.by(() => getDictionary(locale));
 
   let banner: HTMLDivElement | null = $state(null);
-  let visible = $state(false);
-  let bottomOffset = $state(24);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let deferredPrompt: any = null;
-
-  function updatePosition() {
-    const cookieBanner = document.getElementById('cookie-banner');
-    const isCookieVisible = cookieBanner && !cookieBanner.classList.contains('translate-y-full');
-
-    if (isCookieVisible) {
-      const cookieHeight = cookieBanner.offsetHeight;
-      bottomOffset = cookieHeight + 12;
-    } else {
-      bottomOffset = 24;
-    }
-  }
 
   function hideBanner() {
     visible = false;
@@ -68,7 +62,6 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setTimeout(() => {
-              updatePosition();
               visible = true;
             }, 2000);
             observer.unobserve(trigger);
@@ -79,19 +72,12 @@
     );
 
     observer.observe(trigger);
-
-    const interval = setInterval(updatePosition, 500);
-    window.addEventListener('resize', updatePosition);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('resize', updatePosition);
-    };
   });
 </script>
 
 <div
   bind:this={banner}
+  bind:clientHeight={height}
   id="pwa-installer"
   class="fixed left-6 right-6 md:left-auto md:right-6 z-[90] transition-all duration-700 ease-out p-0 md:w-[450px]"
   class:translate-y-full={!visible}

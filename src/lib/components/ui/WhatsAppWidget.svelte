@@ -1,47 +1,16 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { getDictionary } from '@/i18n/utils';
   import type { Locale } from '@/i18n/utils';
 
   interface Props {
     locale: Locale;
+    bottomOffset?: number;
   }
 
-  let { locale }: Props = $props();
+  let { locale, bottomOffset = 24 }: Props = $props();
   const t = $derived.by(() => getDictionary(locale));
 
   const WHATSAPP_URL = 'https://wa.me/34600123456';
-
-  let bottomOffset = $state(24);
-
-  function updatePosition() {
-    const pwaBanner = document.getElementById('pwa-installer');
-    const cookieBanner = document.getElementById('cookie-banner');
-
-    const isPwaVisible = pwaBanner && !pwaBanner.classList.contains('translate-y-full');
-    const isCookieVisible = cookieBanner && !cookieBanner.classList.contains('translate-y-full');
-
-    let offset = 24;
-
-    if (isPwaVisible) {
-      const pwaRect = pwaBanner.getBoundingClientRect();
-      offset = window.innerHeight - pwaRect.top + 16;
-    } else if (isCookieVisible) {
-      offset = cookieBanner.offsetHeight;
-    }
-
-    bottomOffset = offset;
-  }
-
-  onMount(() => {
-    const interval = setInterval(updatePosition, 500);
-    window.addEventListener('resize', updatePosition);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('resize', updatePosition);
-    };
-  });
 </script>
 
 <a

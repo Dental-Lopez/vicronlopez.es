@@ -27,6 +27,24 @@
       });
     }
   });
+
+  // State coordination to avoid layout thrashing and forced reflows
+  let isCookieVisible = $state(false);
+  let isPwaVisible = $state(false);
+  let cookieHeight = $state(0);
+  let pwaHeight = $state(0);
+
+  let pwaBottomOffset = $derived(isCookieVisible ? cookieHeight + 12 : 24);
+
+  let whatsappBottomOffset = $derived.by(() => {
+    if (isPwaVisible) {
+      return pwaBottomOffset + pwaHeight + 16;
+    }
+    if (isCookieVisible) {
+      return cookieHeight + 16;
+    }
+    return 24;
+  });
 </script>
 
 <svelte:head>
@@ -41,6 +59,6 @@
 
 <div id="below-the-fold-trigger" class="absolute top-[100vh] h-1 w-full pointer-events-none"></div>
 
-<WhatsAppWidget locale={data.locale} />
-<CookieBanner locale={data.locale} />
-<PWAInstaller locale={data.locale} />
+<WhatsAppWidget locale={data.locale} bottomOffset={whatsappBottomOffset} />
+<CookieBanner locale={data.locale} bind:visible={isCookieVisible} bind:height={cookieHeight} />
+<PWAInstaller locale={data.locale} bind:visible={isPwaVisible} bind:height={pwaHeight} bottomOffset={pwaBottomOffset} />
