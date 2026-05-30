@@ -10,42 +10,42 @@
   const MAPS_EMBED_URL = 'https://maps.google.com/maps?q=Ourense,+Galicia,+Spain&t=&z=14&ie=UTF8&iwloc=&output=embed';
   const MAPS_FULL_URL = 'https://www.google.com/maps/place/Ourense,+Province+of+Ourense/@42.3383925,-7.8842851,14z';
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const contactSchema = $derived({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ContactPage",
-        "@id": `https://www.vicronlopez.es${$page.url.pathname}#contactpage`,
-        "url": `https://www.vicronlopez.es${$page.url.pathname}`,
-        "name": `${data.t.contact.title} | ${data.t.site.name}`,
-        "description": data.t.contact.subtitle
-      },
-      {
-        "@type": "AutoRental",
-        "@id": `https://www.vicronlopez.es/${data.locale}/#autorental`,
-        "name": data.t.site.name,
-        "url": `https://www.vicronlopez.es/${data.locale}/`,
-        "image": "https://www.vicronlopez.es/icons/icon-512.png",
-        "telephone": "+34 600 123 456",
-        "email": "info@vicronlopez.es",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Ourense",
-          "addressRegion": "Galicia",
-          "addressCountry": "ES"
+  const contactSchemaScript = $derived(
+    `<script type="application/ld+json">${JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ContactPage",
+          "@id": `https://www.vicronlopez.es${$page.url.pathname}#contactpage`,
+          "url": `https://www.vicronlopez.es${$page.url.pathname}`,
+          "name": `${data.t.contact.title} | ${data.t.site.name}`,
+          "description": data.t.contact.subtitle
+        },
+        {
+          "@type": "AutoRental",
+          "@id": `https://www.vicronlopez.es/${data.locale}/#autorental`,
+          "name": data.t.site.name,
+          "url": `https://www.vicronlopez.es/${data.locale}/`,
+          "image": "https://www.vicronlopez.es/icons/icon-512.png",
+          "telephone": "+34 600 123 456",
+          "email": "info@vicronlopez.es",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ourense",
+            "addressRegion": "Galicia",
+            "addressCountry": "ES"
+          }
         }
-      }
-    ]
-  });
+      ]
+    })}</` + `script>`
+  );
 </script>
 
 <svelte:head>
   <title>{data.t.contact.title} | {data.t.site.name}</title>
   <meta name="description" content={data.t.contact.subtitle} />
-  <script type="application/ld+json">
-    {@html JSON.stringify(contactSchema)}
-  </script>
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html contactSchemaScript}
 </svelte:head>
 
 <TopNavBar

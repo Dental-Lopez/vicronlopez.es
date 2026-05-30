@@ -12,43 +12,43 @@
 
   let { data }: { data: PageData } = $props();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const websiteSchema = $derived({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": `https://www.vicronlopez.es/${data.locale}/#website`,
-        "url": `https://www.vicronlopez.es/${data.locale}/`,
-        "name": data.t.site.name,
-        "description": data.t.site.description
-      },
-      {
-        "@type": "AutoRental",
-        "@id": `https://www.vicronlopez.es/${data.locale}/#autorental`,
-        "name": data.t.site.name,
-        "url": `https://www.vicronlopez.es/${data.locale}/`,
-        "image": "https://www.vicronlopez.es/icons/icon-512.png",
-        "telephone": "+34 600 123 456",
-        "email": "info@vicronlopez.es",
-        "priceRange": "$$",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Ourense",
-          "addressRegion": "Galicia",
-          "addressCountry": "ES"
+  const websiteSchemaScript = $derived(
+    `<script type="application/ld+json">${JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": `https://www.vicronlopez.es/${data.locale}/#website`,
+          "url": `https://www.vicronlopez.es/${data.locale}/`,
+          "name": data.t.site.name,
+          "description": data.t.site.description
+        },
+        {
+          "@type": "AutoRental",
+          "@id": `https://www.vicronlopez.es/${data.locale}/#autorental`,
+          "name": data.t.site.name,
+          "url": `https://www.vicronlopez.es/${data.locale}/`,
+          "image": "https://www.vicronlopez.es/icons/icon-512.png",
+          "telephone": "+34 600 123 456",
+          "email": "info@vicronlopez.es",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ourense",
+            "addressRegion": "Galicia",
+            "addressCountry": "ES"
+          }
         }
-      }
-    ]
-  });
+      ]
+    })}</` + `script>`
+  );
 </script>
 
 <svelte:head>
   <title>{data.t.site.name}</title>
   <link rel="canonical" href="https://www.vicronlopez.es/{data.locale}/" />
-  <script type="application/ld+json">
-    {@html JSON.stringify(websiteSchema)}
-  </script>
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html websiteSchemaScript}
 </svelte:head>
 
 <TopNavBar
