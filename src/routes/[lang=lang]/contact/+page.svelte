@@ -3,6 +3,7 @@
   import TopNavBar from '@/components/domains/nav/TopNavBar.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
   import ContactForm from '@/components/ui/ContactForm.svelte';
+  import { jsonLdScript } from '@/lib/jsonLd';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
@@ -11,7 +12,7 @@
   const MAPS_FULL_URL = 'https://www.google.com/maps/place/Ourense,+Province+of+Ourense/@42.3383925,-7.8842851,14z';
 
   const contactSchemaScript = $derived(
-    `<script type="application/ld+json">${JSON.stringify({
+    jsonLdScript({
       "@context": "https://schema.org",
       "@graph": [
         {
@@ -37,7 +38,7 @@
           }
         }
       ]
-    })}</` + `script>`
+    })
   );
 </script>
 

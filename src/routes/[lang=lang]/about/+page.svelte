@@ -2,6 +2,7 @@
   import { page } from '$app/stores';
   import TopNavBar from '@/components/domains/nav/TopNavBar.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
+  import { jsonLdScript } from '@/lib/jsonLd';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
@@ -34,7 +35,7 @@
   );
 
   const aboutSchemaScript = $derived(
-    `<script type="application/ld+json">${JSON.stringify({
+    jsonLdScript({
       "@context": "https://schema.org",
       "@graph": [
         {
@@ -51,7 +52,7 @@
           "url": `https://www.vicronlopez.es/${data.locale}/`,
         }
       ]
-    })}</` + `script>`
+    })
   );
 </script>
 

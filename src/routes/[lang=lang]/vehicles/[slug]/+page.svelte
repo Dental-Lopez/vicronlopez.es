@@ -5,6 +5,7 @@
   import Badge from '@/components/ui/Badge.svelte';
   import VehicleImage from '@/components/ui/VehicleImage.svelte';
   import { formatCurrency } from '@/lib/formatters';
+  import { jsonLdScript } from '@/lib/jsonLd';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
@@ -19,7 +20,7 @@
     ].filter(Boolean) as Array<{ icon: string; label: string; value: string }>
   );
   const carSchemaScript = $derived(
-    `<script type="application/ld+json">${JSON.stringify({
+    jsonLdScript({
       "@context": "https://schema.org",
       "@type": "Car",
       "name": `${data.vehicle.brand} ${data.vehicle.model}`,
@@ -42,7 +43,7 @@
           "unitText": "day"
         },
       }
-    })}</` + `script>`
+    })
   );
 </script>
 

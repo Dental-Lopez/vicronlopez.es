@@ -3,12 +3,13 @@
   import TopNavBar from '@/components/domains/nav/TopNavBar.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
   import VehicleHubIsland from '@/components/ui/VehicleHubIsland.svelte';
+  import { jsonLdScript } from '@/lib/jsonLd';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
 
   const collectionSchemaScript = $derived(
-    `<script type="application/ld+json">${JSON.stringify({
+    jsonLdScript({
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       "name": `${data.t.vehicles.allVehicles} | ${data.t.site.name}`,
@@ -22,7 +23,7 @@
           "url": `https://www.vicronlopez.es/${data.locale}/${data.t.nav.slugs.vehicles}/${v.slug}/`
         }))
       }
-    })}</` + `script>`
+    })
   );
 </script>
 

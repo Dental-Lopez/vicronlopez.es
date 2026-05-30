@@ -8,12 +8,13 @@
   import ReviewsSection from '@/components/domains/landing/ReviewsSection.svelte';
   import ContactSection from '@/components/domains/landing/ContactSection.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
+  import { jsonLdScript } from '@/lib/jsonLd';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
 
   const websiteSchemaScript = $derived(
-    `<script type="application/ld+json">${JSON.stringify({
+    jsonLdScript({
       "@context": "https://schema.org",
       "@graph": [
         {
@@ -40,7 +41,7 @@
           }
         }
       ]
-    })}</` + `script>`
+    })
   );
 </script>
 
