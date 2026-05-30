@@ -108,7 +108,34 @@
 
     <div class="shrink-0 relative">
       <div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center shadow-inner overflow-hidden border border-outline-variant/20 p-2">
-        <img src="/icons/icon-192x192.png" alt="App Icon" class="w-full h-full object-contain rounded-full" />
+        <picture class="w-full h-full object-contain rounded-full flex items-center justify-center">
+          <source
+            srcset="/icons/icon-48.webp 48w,
+                    /icons/icon-72.webp 72w,
+                    /icons/icon-96.webp 96w,
+                    /icons/icon-144.webp 144w,
+                    /icons/icon-192.webp 192w"
+            sizes="48px"
+            type="image/webp"
+          />
+          <source
+            srcset="/icons/icon-48.png 48w,
+                    /icons/icon-72.png 72w,
+                    /icons/icon-96.png 96w,
+                    /icons/icon-144.png 144w,
+                    /icons/icon-192x192.png 192w"
+            sizes="48px"
+            type="image/png"
+          />
+          <img
+            src="/icons/icon-192x192.png"
+            alt="App Icon"
+            class="w-full h-full object-contain rounded-full"
+            loading="lazy"
+            width="48"
+            height="48"
+          />
+        </picture>
       </div>
       <!-- Badge-like effect -->
       <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-primary rounded-full border-2 border-surface-container-high flex items-center justify-center">

@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Simplified the vehicle data model: removed the `type` (`sale`/`rent`/`both`) field and the nested `price` object in favor of a single required `pricePerDay` number (`src/lib/schemas/vehicle.ts`, `src/lib/data/vehicles.json`).
 - Collapsed the vehicle browsing experience into a single `/vehicles` (`/es/vehiculos`) inventory; removed the buy/rent mode toggle from the hero and inventory hub.
 - Updated base URL / canonical / prerender origin to `https://vicronlopez.es` and `PUBLIC_SITE_NAME` default to `Vicron Lopez`.
+- **Performance:** Optimized the PWA installer app icon delivery in `PWAInstaller.svelte` by converting the static PNG image to a responsive `<picture>` element with WebP/PNG sources and matching `srcset`/`sizes` attributes.
+- **Service Worker:** Updated `sw.js` to pre-cache the new responsive WebP icon sizes, ensuring full offline functionality for the PWA installer widget.
 
 ### Fixed
 
