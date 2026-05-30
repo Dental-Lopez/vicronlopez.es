@@ -12,6 +12,7 @@ dist/
 build_log*.txt
 .netlify/
 .output/
+.wrangler/
 
 # Environment variables
 .env
