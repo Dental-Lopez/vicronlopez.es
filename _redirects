@@ -1,0 +1,6 @@
+# Edge redirect for the language root.
+# Sends `/` straight to the default locale at the CDN edge (HTTP 302) so the
+# browser never has to download the SPA shell and boot the client router just
+# to run a `goto('/es/')`. This removes a full round-trip from FCP/LCP on the
+# tested entry URL. Mirrors the client-side fallback in src/routes/+page.svelte.
+/  /es/  302
