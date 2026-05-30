@@ -18,6 +18,7 @@ export const es: Dictionary = {
     services: 'Servicios',
     signIn: 'Ingresar',
     phone: '+34 600 123 456',
+    callAria: 'Llamanos al +34 600 123 456',
     // Nueva estructura de navegación unificada
     links: {
       inventory: '/vehiculos/',
@@ -109,6 +110,7 @@ export const es: Dictionary = {
     networkTitle: 'Red Global',
     networkBody:
       'Accedé a nuestra colección exclusiva en los principales centros internacionales. Movilidad sin límites, donde sea que te lleve tu viaje.',
+    sectionTitle: 'Por qué Vicron Lopez',
   },
   footer: {
     copyright: '© 2024 Vicron Lopez. Todos los derechos reservados.',

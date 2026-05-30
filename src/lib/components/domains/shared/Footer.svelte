@@ -26,9 +26,9 @@
 
       <!-- Links Column 1 -->
       <div>
-        <h4 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
+        <h2 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
           {t.nav.inventory}
-        </h4>
+        </h2>
         <ul class="space-y-sm">
           <li><a href={`/${locale}${t.nav.links.inventory}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.inventory}</a></li>
         </ul>
@@ -36,9 +36,9 @@
 
       <!-- Links Column 2 -->
       <div>
-        <h4 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
+        <h2 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
           {t.footer.company}
-        </h4>
+        </h2>
         <ul class="space-y-sm">
           <li><a href={`/${locale}${t.nav.links.about}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.about}</a></li>
           <li><a href={`/${locale}${t.nav.links.contact}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.contact}</a></li>
@@ -48,9 +48,9 @@
 
       <!-- Legal -->
       <div>
-        <h4 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
+        <h2 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
           Legal
-        </h4>
+        </h2>
         <ul class="space-y-sm">
           <li><a href={`/${locale}${t.nav.links.privacy}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.privacy}</a></li>
           <li><a href={`/${locale}${t.nav.links.terms}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.terms}</a></li>

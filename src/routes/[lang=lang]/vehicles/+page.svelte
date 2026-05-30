@@ -38,6 +38,7 @@
 
   <section>
     <div class="max-w-7xl mx-auto px-8">
+      <h2 class="sr-only">{data.t.filters.searchLabel}</h2>
       <VehicleHubIsland
         vehicles={data.vehicles}
         locale={data.locale}
