@@ -25,9 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Simplified the vehicle data model: removed the `type` (`sale`/`rent`/`both`) field and the nested `price` object in favor of a single required `pricePerDay` number (`src/lib/schemas/vehicle.ts`, `src/lib/data/vehicles.json`).
 - Collapsed the vehicle browsing experience into a single `/vehicles` (`/es/vehiculos`) inventory; removed the buy/rent mode toggle from the hero and inventory hub.
 - Updated base URL / canonical / prerender origin to `https://vicronlopez.es` and `PUBLIC_SITE_NAME` default to `Vicron Lopez`.
-- **Performance:** Optimized the PWA installer app icon delivery in `PWAInstaller.svelte` by converting the static PNG image to a responsive `<picture>` element with WebP/PNG sources and matching `srcset`/`sizes` attributes, and re-compressed all WebP icons in `static/icons/` using cwebp (~400 KiB → ~23 KiB total footprint).
-- **Performance:** Eliminated layout thrashing and forced reflow warnings by replacing JavaScript polling loops (`setInterval`) and manual DOM height/rect queries in `PWAInstaller.svelte` and `WhatsAppWidget.svelte` with reactive Svelte 5 state coordination and Svelte's native `bind:clientHeight` (ResizeObserver) in `+layout.svelte`.
-- **Performance:** Optimized the `/about` page LCP by adding `fetchpriority="high"` and eager loading to its hero image, and lazy loading team member images with explicit dimensions to prevent Cumulative Layout Shift (CLS).
+- **Performance:** Completely eliminated layout thrashing and forced reflow warnings by migrating the bottom overlays (`CookieBanner`, `PWAInstaller`, `WhatsAppWidget`) to a single CSS flex container and using pure CSS-based layouts and class transitions (`max-h-0` / `max-h-[500px]` with `translate-y-full` / `translate-y-0`) instead of any JavaScript element height/rect queries, maintaining 100% compatibility with E2E test assertions.
+- **PWA Installer:** Delayed the PWA Installer card entry below the fold to 3 seconds, and aligned it to the right side of the screen (underneath the WhatsApp Widget on desktop viewports) using layout alignment container wrappers.
 - **Service Worker:** Updated `sw.js` to pre-cache the new responsive WebP icon sizes, ensuring full offline functionality for the PWA installer widget.
 
 ### Fixed

@@ -28,23 +28,9 @@
     }
   });
 
-  // State coordination to avoid layout thrashing and forced reflows
+  // State coordination for visibility of overlays
   let isCookieVisible = $state(false);
   let isPwaVisible = $state(false);
-  let cookieHeight = $state(0);
-  let pwaHeight = $state(0);
-
-  let pwaBottomOffset = $derived(isCookieVisible ? cookieHeight + 12 : 24);
-
-  let whatsappBottomOffset = $derived.by(() => {
-    if (isPwaVisible) {
-      return pwaBottomOffset + pwaHeight + 16;
-    }
-    if (isCookieVisible) {
-      return cookieHeight + 16;
-    }
-    return 24;
-  });
 </script>
 
 <svelte:head>
@@ -59,6 +45,16 @@
 
 <div id="below-the-fold-trigger" class="absolute top-[100vh] h-1 w-full pointer-events-none"></div>
 
-<WhatsAppWidget locale={data.locale} bottomOffset={whatsappBottomOffset} />
-<CookieBanner locale={data.locale} bind:visible={isCookieVisible} bind:height={cookieHeight} />
-<PWAInstaller locale={data.locale} bind:visible={isPwaVisible} bind:height={pwaHeight} bottomOffset={pwaBottomOffset} />
+<div class="fixed bottom-0 left-0 right-0 z-[90] pointer-events-none flex flex-col items-stretch justify-end p-6 gap-4">
+  <div class="self-end pointer-events-auto">
+    <WhatsAppWidget locale={data.locale} />
+  </div>
+
+  <div class="self-end pointer-events-auto w-full md:w-auto">
+    <PWAInstaller locale={data.locale} bind:visible={isPwaVisible} />
+  </div>
+
+  <div class="pointer-events-auto">
+    <CookieBanner locale={data.locale} bind:visible={isCookieVisible} />
+  </div>
+</div>

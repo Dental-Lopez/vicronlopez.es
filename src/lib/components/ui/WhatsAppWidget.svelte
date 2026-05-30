@@ -4,10 +4,9 @@
 
   interface Props {
     locale: Locale;
-    bottomOffset?: number;
   }
 
-  let { locale, bottomOffset = 24 }: Props = $props();
+  let { locale }: Props = $props();
   const t = $derived.by(() => getDictionary(locale));
 
   const WHATSAPP_URL = 'https://wa.me/34600123456';
@@ -19,8 +18,7 @@
   target="_blank"
   rel="noopener noreferrer"
   aria-label={t.whatsapp.label}
-  class="whatsapp-widget fixed right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-300 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-  style="bottom: {bottomOffset}px;"
+  class="whatsapp-widget flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-300 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"

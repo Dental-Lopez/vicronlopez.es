@@ -15,7 +15,7 @@ test.describe('PWA Installer Gadget', () => {
     }
   });
 
-  test('should appear after scrolling below the fold and waiting 2 seconds', async ({ page }) => {
+  test('should appear after scrolling below the fold and waiting 3 seconds', async ({ page }) => {
     const installer = page.locator('#pwa-installer');
     const trigger = page.locator('#below-the-fold-trigger');
     

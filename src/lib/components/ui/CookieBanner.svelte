@@ -6,17 +6,13 @@
   interface Props {
     locale: Locale;
     visible?: boolean;
-    height?: number;
   }
 
   let {
     locale,
-    visible = $bindable(false),
-    height = $bindable(0)
+    visible = $bindable(false)
   }: Props = $props();
   const t = $derived.by(() => getDictionary(locale));
-
-  let banner: HTMLDivElement | null = $state(null);
 
   onMount(() => {
     const hasAccepted = localStorage.getItem('cookies-accepted');
@@ -34,17 +30,17 @@
 </script>
 
 <div
-  bind:this={banner}
-  bind:clientHeight={height}
   id="cookie-banner"
-  class="fixed bottom-0 left-0 right-0 z-[100] transition-all duration-700 ease-out p-6"
+  class="w-full transition-all duration-500 ease-out overflow-hidden"
   class:translate-y-full={!visible}
   class:opacity-0={!visible}
   class:pointer-events-none={!visible}
+  class:max-h-0={!visible}
   class:translate-y-0={visible}
   class:opacity-100={visible}
+  class:max-h-[500px]={visible}
   role="alert"
-  style="will-change: transform, opacity;"
+  style="will-change: max-height, transform, opacity;"
 >
   <div class="max-w-7xl mx-auto">
     <div class="bg-surface-container-high/95 backdrop-blur-3xl border border-outline-variant/30 rounded-2xl p-6 md:p-8 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative group">
