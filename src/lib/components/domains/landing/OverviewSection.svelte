@@ -30,6 +30,7 @@
 
 <section class="py-xl bg-surface-container-lowest relative z-10" id="overview">
   <div class="max-w-7xl mx-auto px-8">
+    <h2 class="sr-only">{t.features.sectionTitle}</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
       {#each cards as { icon, title, body } (icon)}
         <article class="p-lg rounded-xl border border-outline-variant/20 hover:atmospheric-shadow transition-all duration-300 group">

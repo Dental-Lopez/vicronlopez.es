@@ -48,7 +48,7 @@
         />
 
         <!-- Stats/Trust -->
-        <div class="mt-md flex items-center space-x-lg text-on-surface-variant/60">
+        <div class="mt-md flex items-center space-x-lg text-on-surface-variant">
           <div class="flex items-center gap-xs">
             <span class="text-h3 font-display font-bold text-on-surface">{vehicleCount}+</span>
             <span class="text-label-caps uppercase tracking-wider">{t.nav.inventory}</span>

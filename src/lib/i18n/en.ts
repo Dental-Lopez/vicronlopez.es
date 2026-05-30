@@ -16,6 +16,7 @@ export const en = {
     services: 'Services',
     signIn: 'Sign In',
     phone: '+34 600 123 456',
+    callAria: 'Call us at +34 600 123 456',
     // New unified navigation structure
     links: {
       inventory: '/vehicles/',
@@ -107,6 +108,7 @@ export const en = {
     networkTitle: 'Global Network',
     networkBody:
       'Access our exclusive collection across major international hubs. Seamless mobility, wherever your journey takes you.',
+    sectionTitle: 'Why Vicron Lopez',
   },
   footer: {
     copyright: '© 2024 Vicron Lopez. All rights reserved.',
