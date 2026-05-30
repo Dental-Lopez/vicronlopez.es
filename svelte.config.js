@@ -12,6 +12,11 @@ const config = {
     alias: {
       '@': 'src/lib',
     },
+    // Inline the shared layout CSS (~65KB raw, ~11KB brotli) into <head> as a
+    // <style> block instead of a render-blocking <link>. Removes the CSS round
+    // trip from the critical path, cutting FCP/LCP on the entry page. The HTML
+    // is brotli-compressed at the edge, so the real wire cost stays small.
+    inlineStyleThreshold: 70000,
     prerender: {
       handleHttpError: 'fail',
       origin: 'https://vicronlopez.es'
