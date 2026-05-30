@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Switched SvelteKit adapter from `@sveltejs/adapter-vercel` to `@sveltejs/adapter-cloudflare` to support Cloudflare Workers deployment.
 - **Performance:** raised Lighthouse Performance from ~0.58/0.76 to ≥0.90 by optimizing images (enhanced-img, ~19MB → responsive variants) and removing render-blocking Google Fonts in favor of self-hosted/bundled fonts.
 - Upgraded `@sveltejs/vite-plugin-svelte` to v6 (required by enhanced-img and compatible with Vite 7).
 - **Rebranded** the site from "AeroDrive" to **Vicron Lopez** across navigation, footer, hero, copy, legal text, testimonials, meta tags and contact emails (`info@vicronlopez.es`).
