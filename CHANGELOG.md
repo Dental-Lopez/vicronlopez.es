@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated base URL / canonical / prerender origin to `https://vicronlopez.es` and `PUBLIC_SITE_NAME` default to `Vicron Lopez`.
 - **Performance:** Optimized the PWA installer app icon delivery in `PWAInstaller.svelte` by converting the static PNG image to a responsive `<picture>` element with WebP/PNG sources and matching `srcset`/`sizes` attributes, and re-compressed all WebP icons in `static/icons/` using cwebp (~400 KiB → ~23 KiB total footprint).
 - **Performance:** Eliminated layout thrashing and forced reflow warnings by replacing JavaScript polling loops (`setInterval`) and manual DOM height/rect queries in `PWAInstaller.svelte` and `WhatsAppWidget.svelte` with reactive Svelte 5 state coordination and Svelte's native `bind:clientHeight` (ResizeObserver) in `+layout.svelte`.
+- **Performance:** Optimized the `/about` page LCP by adding `fetchpriority="high"` and eager loading to its hero image, and lazy loading team member images with explicit dimensions to prevent Cumulative Layout Shift (CLS).
 - **Service Worker:** Updated `sw.js` to pre-cache the new responsive WebP icon sizes, ensuring full offline functionality for the PWA installer widget.
 
 ### Fixed

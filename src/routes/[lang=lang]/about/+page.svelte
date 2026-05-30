@@ -54,6 +54,8 @@
       alt="Vicron Lopez Luxury Fleet"
       class="absolute inset-0 w-full h-full object-cover object-center z-0"
       src="/assets/images/about/hero-dealership.webp"
+      fetchpriority="high"
+      loading="eager"
     />
     <div class="relative z-20 text-center px-8 max-w-4xl mx-auto">
       <h1 class="font-display text-[40px] md:text-[64px] lg:text-[80px] font-bold leading-[1.1] tracking-tight text-on-surface mb-6 drop-shadow-sm">
@@ -136,6 +138,9 @@
                 alt={member.name}
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
                 src={member.image}
+                loading="lazy"
+                width="192"
+                height="192"
               />
             </div>
             <h3 class="font-display text-[22px] font-bold text-on-surface">{member.name}</h3>
