@@ -18,11 +18,40 @@
       data.vehicle.specs.fuel && { icon: 'local_gas_station', label: data.t.vehicles.fuel, value: data.vehicle.specs.fuel },
     ].filter(Boolean) as Array<{ icon: string; label: string; value: string }>
   );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const carSchema = $derived({
+    "@context": "https://schema.org",
+    "@type": "Car",
+    "name": `${data.vehicle.brand} ${data.vehicle.model}`,
+    "image": `https://www.vicronlopez.es${data.vehicle.image}`,
+    "description": `${data.t.vehicleDetail.forRent}: ${data.vehicle.brand} ${data.vehicle.model} (${data.vehicle.year})`,
+    "model": data.vehicle.model,
+    "brand": {
+      "@type": "Brand",
+      "name": data.vehicle.brand
+    },
+    "modelDate": data.vehicle.year,
+    "offers": {
+      "@type": "Offer",
+      "price": data.vehicle.pricePerDay,
+      "priceCurrency": data.locale === 'es' ? 'ARS' : 'USD',
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": data.vehicle.pricePerDay,
+        "priceCurrency": data.locale === 'es' ? 'ARS' : 'USD',
+        "unitText": "day"
+      },
+      "availability": data.vehicle.available ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+    }
+  });
 </script>
 
 <svelte:head>
   <title>{data.vehicle.brand} {data.vehicle.model} {data.vehicle.year} | {data.t.site.name}</title>
   <meta name="description" content="{data.t.vehicleDetail.forRent}: {data.vehicle.brand} {data.vehicle.model} — {data.t.vehicleDetail.specifications}" />
+  <script type="application/ld+json">
+    {@html JSON.stringify(carSchema)}
+  </script>
 </svelte:head>
 
 <TopNavBar

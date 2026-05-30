@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Structured data (JSON-LD) utilizing schema.org specifications across all main routes (Homepage, About, Contact, Inventory list, and Vehicle detail pages) using `WebSite`, `AutoRental`, `CollectionPage`, `ItemList`, and `Car` schemas.
+- Dynamic OpenGraph (OG) and Twitter Card metadata computed at layout level using Svelte's `$derived.by` rune to construct context-aware titles, descriptions, canonical URLs, and imagery.
 - Lighthouse CI configuration (`.lighthouseci/lighthouserc.json`) wiring the `bun run lighthouse` script: collects the home, inventory and localized inventory routes via the preview server and asserts Performance ≥ 0.90 and Accessibility ≥ 0.95.
 - "Vehicle Delivery" service on the landing services section (replacing the former sales service), with `en`/`es` copy.
 - Responsive, build-optimized vehicle images via `@sveltejs/enhanced-img` (`<picture>` with AVIF/WebP and intrinsic dimensions); new `VehicleImage` wrapper and `getVehicleImage` slug→asset map.
@@ -16,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - This `CHANGELOG.md`.
 
 ### Changed
+
+- Updated canonical metadata domain, canonical link tags, and schema graphs to strictly use the `https://www.vicronlopez.es/` subdomain.
 
 - Switched SvelteKit adapter from `@sveltejs/adapter-vercel` to `@sveltejs/adapter-cloudflare` to support Cloudflare Workers deployment.
 - **Performance:** raised Lighthouse Performance from ~0.58/0.76 to ≥0.90 by optimizing images (enhanced-img, ~19MB → responsive variants) and removing render-blocking Google Fonts in favor of self-hosted/bundled fonts.

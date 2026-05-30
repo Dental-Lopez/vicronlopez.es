@@ -32,11 +32,35 @@
   const team = $derived(
     teamMembers.map((member, i) => ({ ...member, role: data.t.about.roles[i] }))
   );
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const aboutSchema = $derived({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": `https://www.vicronlopez.es${$page.url.pathname}#aboutpage`,
+        "url": `https://www.vicronlopez.es${$page.url.pathname}`,
+        "name": `${data.t.about.title} | ${data.t.site.name}`,
+        "description": data.t.about.subtitle
+      },
+      {
+        "@type": "AutoRental",
+        "@id": `https://www.vicronlopez.es/${data.locale}/#autorental`,
+        "name": data.t.site.name,
+        "url": `https://www.vicronlopez.es/${data.locale}/`,
+        "image": "https://www.vicronlopez.es/icons/icon-512.png"
+      }
+    ]
+  });
 </script>
 
 <svelte:head>
   <title>{data.t.about.title} | {data.t.site.name}</title>
   <meta name="description" content={data.t.about.subtitle} />
+  <script type="application/ld+json">
+    {@html JSON.stringify(aboutSchema)}
+  </script>
 </svelte:head>
 
 <TopNavBar

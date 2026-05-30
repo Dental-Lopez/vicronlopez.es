@@ -6,11 +6,31 @@
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const collectionSchema = $derived({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `${data.t.vehicles.allVehicles} | ${data.t.site.name}`,
+    "description": data.t.vehicles.allVehiclesSubline,
+    "url": `https://www.vicronlopez.es/${data.locale}/${data.t.nav.slugs.vehicles}/`,
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": data.vehicles.map((v: { slug: string }, index: number) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": `https://www.vicronlopez.es/${data.locale}/${data.t.nav.slugs.vehicles}/${v.slug}/`
+      }))
+    }
+  });
 </script>
 
 <svelte:head>
   <title>{data.t.nav.inventory} | {data.t.site.name}</title>
   <meta name="description" content={data.t.vehicles.allVehiclesSubline} />
+  <script type="application/ld+json">
+    {@html JSON.stringify(collectionSchema)}
+  </script>
 </svelte:head>
 
 <TopNavBar
