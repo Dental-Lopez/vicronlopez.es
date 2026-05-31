@@ -125,16 +125,79 @@
 
 <div id="below-the-fold-trigger" class="absolute top-[100vh] h-1 w-full pointer-events-none"></div>
 
-<div class="fixed bottom-0 left-0 right-0 z-[90] pointer-events-none flex flex-col items-stretch justify-end p-6 gap-4">
-  <div class="self-end pointer-events-auto">
+<!-- WhatsApp Widget Wrapper: isolated fixed position with CSS transform translations -->
+<div
+  class="fixed bottom-6 right-6 z-[80] pointer-events-none whatsapp-wrapper"
+  class:cookie-visible={isCookieVisible && !isPwaVisible}
+  class:pwa-visible={!isCookieVisible && isPwaVisible}
+  class:both-visible={isCookieVisible && isPwaVisible}
+>
+  <div class="pointer-events-auto">
     <WhatsAppWidget locale={data.locale} />
   </div>
+</div>
 
-  <div class="self-end pointer-events-auto w-full md:w-auto">
+<!-- PWA Installer Wrapper: isolated fixed position with CSS transform translation -->
+<div
+  class="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 z-[85] pointer-events-none pwa-wrapper"
+  class:cookie-visible={isCookieVisible}
+>
+  <div class="pointer-events-auto w-full md:w-auto">
     <PWAInstaller locale={data.locale} bind:visible={isPwaVisible} />
   </div>
+</div>
 
+<!-- Cookie Banner Wrapper: isolated fixed position -->
+<div class="fixed bottom-0 left-0 right-0 z-[90] pointer-events-none p-6">
   <div class="pointer-events-auto">
     <CookieBanner locale={data.locale} bind:visible={isCookieVisible} />
   </div>
 </div>
+
+<style>
+  .whatsapp-wrapper {
+    --translate-y: 0px;
+    transform: translateY(var(--translate-y));
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pwa-wrapper {
+    --translate-y: 0px;
+    transform: translateY(var(--translate-y));
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Shifting when cookie banner is visible */
+  .whatsapp-wrapper.cookie-visible {
+    --translate-y: -140px;
+  }
+  .pwa-wrapper.cookie-visible {
+    --translate-y: -140px;
+  }
+  @media (max-width: 768px) {
+    .whatsapp-wrapper.cookie-visible,
+    .pwa-wrapper.cookie-visible {
+      --translate-y: -210px; /* Cookie banner is taller on mobile */
+    }
+  }
+
+  /* Shifting when PWA installer is visible */
+  .whatsapp-wrapper.pwa-visible {
+    --translate-y: -110px;
+  }
+  @media (max-width: 768px) {
+    .whatsapp-wrapper.pwa-visible {
+      --translate-y: -130px;
+    }
+  }
+
+  /* Shifting when both are visible */
+  .whatsapp-wrapper.both-visible {
+    --translate-y: -250px;
+  }
+  @media (max-width: 768px) {
+    .whatsapp-wrapper.both-visible {
+      --translate-y: -340px;
+    }
+  }
+</style>
+
