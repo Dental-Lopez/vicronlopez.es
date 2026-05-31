@@ -182,21 +182,21 @@
 
   /* Shifting when PWA installer is visible */
   .whatsapp-wrapper.pwa-visible {
-    --translate-y: -110px;
+    --translate-y: -140px;
   }
   @media (max-width: 768px) {
     .whatsapp-wrapper.pwa-visible {
-      --translate-y: -130px;
+      --translate-y: -160px;
     }
   }
 
   /* Shifting when both are visible */
   .whatsapp-wrapper.both-visible {
-    --translate-y: -250px;
+    --translate-y: -280px;
   }
   @media (max-width: 768px) {
     .whatsapp-wrapper.both-visible {
-      --translate-y: -340px;
+      --translate-y: -390px;
     }
   }
 </style>
