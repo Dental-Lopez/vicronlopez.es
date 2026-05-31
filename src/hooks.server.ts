@@ -41,6 +41,14 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   return resolve(event, {
-    preload: ({ type }) => type === 'font' || type === 'js' || type === 'css'
+    preload: ({ type, path }) => {
+      if (type === 'font') {
+        // Only preload the Latin subsets and the custom subsetted material symbols
+        return path.includes('inter-latin-') || 
+               path.includes('space-grotesk-latin-') || 
+               path.includes('material-symbols-outlined-');
+      }
+      return type === 'js' || type === 'css';
+    }
   });
 };
