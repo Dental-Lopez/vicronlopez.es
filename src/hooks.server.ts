@@ -43,10 +43,11 @@ export const handle: Handle = async ({ event, resolve }) => {
   return resolve(event, {
     preload: ({ type, path }) => {
       if (type === 'font') {
-        // Only preload the Latin subsets and the custom subsetted material symbols
+        // Only preload the critical text fonts (Latin subsets) above the fold.
+        // Exclude the 280KB material symbols icon font from critical preloads to avoid
+        // bandwidth contention and reduce LCP element render delay.
         return path.includes('inter-latin-') || 
-               path.includes('space-grotesk-latin-') || 
-               path.includes('material-symbols-outlined-');
+               path.includes('space-grotesk-latin-');
       }
       return type === 'js' || type === 'css';
     }
