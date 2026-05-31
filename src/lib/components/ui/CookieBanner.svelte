@@ -39,6 +39,7 @@
   class:is-visible={visible}
   role="alert"
   aria-hidden={!visible}
+  inert={!visible}
   style="will-change: transform, opacity;"
 >
   <div class="max-w-7xl mx-auto">

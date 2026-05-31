@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Accessibility (a11y):** Resolved ARIA violation where hidden containers (`[aria-hidden="true"]`) contained focusable descendants (links and buttons). Added the `inert` attribute natively (`inert={!visible}`) to `CookieBanner` and `PWAInstaller` to fully disable keyboard tabbing and screen reader visibility of their children when hidden.
 - Blank page in `vite dev` caused by a `@sveltejs/vite-plugin-svelte` v5 / Vite 7 mismatch (the plugin upgrade to v6 resolves the corrupted dependency optimization).
 - Cloudflare deployment check failure by creating `wrangler.toml` with `assets` settings and generating `worker-configuration.d.ts` definitions.
 

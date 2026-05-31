@@ -80,6 +80,7 @@
   class:is-visible={visible}
   role="complementary"
   aria-hidden={!visible}
+  inert={!visible}
   style="will-change: transform, opacity;"
 >
   <div class="bg-surface-container-high/95 backdrop-blur-3xl border border-outline-variant/30 rounded-3xl p-5 md:p-6 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.4)] flex items-center gap-5 overflow-hidden relative group">
