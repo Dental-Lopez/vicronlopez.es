@@ -14,7 +14,9 @@
   let { data, children }: Props = $props();
 
   $effect(() => {
-    document.documentElement.lang = data.locale;
+    if (document.documentElement.lang !== data.locale) {
+      document.documentElement.lang = data.locale;
+    }
   });
 
   $effect(() => {

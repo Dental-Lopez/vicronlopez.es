@@ -81,4 +81,19 @@ describe('handle (i18n Redirect Middleware)', () => {
     expect(resolve).toHaveBeenCalled();
     expect(result.status).toBe(200);
   });
+
+  it('calls resolve with transformPageChunk that replaces lang attribute', async () => {
+    const event = makeEvent('/es/vehiculos/') as any;
+    event.params = { lang: 'es' };
+    const resolve = vi.fn().mockResolvedValue(new Response('ok', { status: 200 }));
+    await handle({ event, resolve });
+    
+    expect(resolve).toHaveBeenCalled();
+    const resolveOptions = resolve.mock.calls[0][1];
+    expect(resolveOptions.transformPageChunk).toBeDefined();
+    
+    const inputHtml = '<!doctype html><html lang="en" class=""><body></body></html>';
+    const outputHtml = resolveOptions.transformPageChunk({ html: inputHtml });
+    expect(outputHtml).toContain('lang="es"');
+  });
 });

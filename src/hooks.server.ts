@@ -41,6 +41,10 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   return resolve(event, {
+    transformPageChunk: ({ html }) => {
+      const lang = event.params.lang || 'en';
+      return html.replace('lang="en"', `lang="${lang}"`);
+    },
     preload: ({ type, path }) => {
       if (type === 'font') {
         // Only preload the critical text fonts (Latin subsets) above the fold.
