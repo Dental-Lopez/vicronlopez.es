@@ -31,13 +31,14 @@
 
 <div
   id="cookie-banner"
-  class="w-full transition-[transform,opacity,display] transition-discrete duration-500 ease-out
-         translate-y-full opacity-0 pointer-events-none hidden
+  class="w-full transition-[transform,opacity] duration-500 ease-out
+         translate-y-full opacity-0 pointer-events-none
          starting:translate-y-full starting:opacity-0
          motion-reduce:transition-none
-         [&.is-visible]:block [&.is-visible]:translate-y-0 [&.is-visible]:opacity-100 [&.is-visible]:pointer-events-auto"
+         [&.is-visible]:translate-y-0 [&.is-visible]:opacity-100 [&.is-visible]:pointer-events-auto"
   class:is-visible={visible}
   role="alert"
+  aria-hidden={!visible}
   style="will-change: transform, opacity;"
 >
   <div class="max-w-7xl mx-auto">

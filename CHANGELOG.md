@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Performance:** Optimized font loading and layout shifts (CLS). Enabled font preloading in the SvelteKit `resolve` hook (`src/hooks.server.ts`) to download self-hosted fonts early. Isolated the bottom overlays (`CookieBanner`, `PWAInstaller`, `WhatsAppWidget`) into individual fixed-positioned wrappers, using pure CSS `transform: translateY` translations to stack and transition them without triggering layout shifts (CLS).
+- **Performance:** Optimized font loading and layout shifts (CLS). Enabled font preloading in the SvelteKit `resolve` hook (`src/hooks.server.ts`) to download self-hosted fonts early. Isolated the bottom overlays (`CookieBanner`, `PWAInstaller`, `WhatsAppWidget`) into individual fixed-positioned wrappers, using pure CSS `transform: translateY` translations to stack and transition them. Removed the `display: none` (`hidden`) toggles from the components to keep their layout geometry stable in the layout tree, completely eliminating layout shifts (CLS: 0).
 - Updated canonical metadata domain, canonical link tags, and schema graphs to strictly use the `https://www.vicronlopez.es/` subdomain.
 
 - Switched SvelteKit adapter from `@sveltejs/adapter-vercel` to `@sveltejs/adapter-cloudflare` to support Cloudflare Workers deployment.
