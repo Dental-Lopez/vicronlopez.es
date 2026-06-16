@@ -7,10 +7,79 @@ import {
   getUniqueBrands,
   getUniqueCategories,
 } from './vehicles';
+import type { Vehicle } from '../schemas/vehicle';
+
+const mockVehicles: Vehicle[] = [
+  {
+    id: 'm1',
+    slug: 'tesla-model-s-plaid',
+    brand: 'Tesla',
+    model: 'Model S Plaid',
+    year: 2024,
+    category: 'electric-sedan',
+    pricePerDay: 800,
+    specs: { acceleration: '1.99s', drivetrain: 'AWD', seats: 5, fuel: 'Electric' },
+    image: '/vehicles/tesla-model-s-plaid.webp',
+    featured: true,
+    available: true,
+  },
+  {
+    id: 'm2',
+    slug: 'ford-f150-raptor',
+    brand: 'Ford',
+    model: 'F-150 Raptor',
+    year: 2023,
+    category: 'truck',
+    pricePerDay: 250,
+    specs: { acceleration: '5.2s', drivetrain: '4WD', seats: 5, fuel: 'Gasoline' },
+    image: '/vehicles/ford-f150-raptor.webp',
+    featured: false,
+    available: true,
+  },
+  {
+    id: 'm3',
+    slug: 'bmw-m5-competition',
+    brand: 'BMW',
+    model: 'M5 Competition',
+    year: 2023,
+    category: 'sedan',
+    pricePerDay: 450,
+    specs: { acceleration: '3.1s', drivetrain: 'AWD', seats: 5, fuel: 'Gasoline' },
+    image: '/vehicles/bmw-m5-competition.webp',
+    featured: true,
+    available: true,
+  },
+  {
+    id: 'm4',
+    slug: 'porsche-cayman',
+    brand: 'Porsche',
+    model: '718 Cayman GT4',
+    year: 2022,
+    category: 'sports-coupe',
+    pricePerDay: 350,
+    specs: { acceleration: '3.9s', drivetrain: 'RWD', seats: 2, fuel: 'Gasoline' },
+    image: '/vehicles/porsche-718-cayman.webp',
+    featured: false,
+    available: true,
+  },
+  {
+    id: 'm5',
+    slug: 'fiat-500-1969',
+    brand: 'Fiat',
+    model: '500',
+    year: 1969,
+    category: 'convertible',
+    pricePerDay: 150,
+    specs: { drivetrain: 'RWD', seats: 4, fuel: 'Gasoline' },
+    image: '/vehicles/fiat-500-1969.webp',
+    featured: false,
+    available: true,
+  }
+];
 
 describe('getAllVehicles', () => {
-  it('returns all 22 vehicles', () => {
-    expect(getAllVehicles()).toHaveLength(22);
+  it('returns all 3 vehicles', () => {
+    expect(getAllVehicles()).toHaveLength(3);
   });
 
   it('every vehicle has required fields', () => {
@@ -33,7 +102,7 @@ describe('getAllVehicles', () => {
 describe('getSearchableVehicles', () => {
   it('returns a lightweight version of all vehicles', () => {
     const result = getSearchableVehicles();
-    expect(result).toHaveLength(22);
+    expect(result).toHaveLength(3);
 
     const v = result[0];
     expect(v).toHaveProperty('id');
@@ -70,7 +139,7 @@ describe('getFeaturedVehicles', () => {
 });
 
 describe('filterVehicles', () => {
-  const all = getAllVehicles();
+  const all = mockVehicles;
 
   it('no filters returns all vehicles', () => {
     expect(filterVehicles(all, {})).toHaveLength(all.length);
@@ -144,7 +213,7 @@ describe('filterVehicles', () => {
 });
 
 describe('getUniqueBrands', () => {
-  const all = getAllVehicles();
+  const all = mockVehicles;
 
   it('returns sorted unique brands', () => {
     const brands = getUniqueBrands(all);
@@ -171,7 +240,7 @@ describe('getUniqueBrands', () => {
 });
 
 describe('getUniqueCategories', () => {
-  const all = getAllVehicles();
+  const all = mockVehicles;
 
   it('returns sorted unique categories', () => {
     const cats = getUniqueCategories(all);

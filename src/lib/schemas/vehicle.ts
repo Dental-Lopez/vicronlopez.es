@@ -28,6 +28,7 @@ export const vehicleSchema = z.object({
   image: z.string(),
   featured: z.boolean(),
   available: z.boolean(),
+  deposit: z.number().int().positive().optional(),
 });
 
 export const vehiclesJsonSchema = z.object({

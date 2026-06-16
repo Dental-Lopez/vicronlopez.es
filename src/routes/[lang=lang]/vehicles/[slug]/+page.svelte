@@ -4,11 +4,14 @@
   import Footer from '@/components/domains/shared/Footer.svelte';
   import Badge from '@/components/ui/Badge.svelte';
   import VehicleImage from '@/components/ui/VehicleImage.svelte';
+  import PaymentMethods from '@/components/ui/PaymentMethods.svelte';
   import { formatCurrency } from '@/lib/formatters';
   import { jsonLdScript } from '@/lib/jsonLd';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
+
+  let showDepositInfo = $state(false);
 
   const specsEntries = $derived(
     [
@@ -46,6 +49,14 @@
     })
   );
 </script>
+
+<svelte:window
+  onclick={(e) => {
+    if (showDepositInfo && !(e.target as HTMLElement).closest('.deposit-info-container')) {
+      showDepositInfo = false;
+    }
+  }}
+/>
 
 <svelte:head>
   <title>{data.vehicle.brand} {data.vehicle.model} {data.vehicle.year} | {data.t.site.name}</title>
@@ -131,6 +142,59 @@
           </div>
         {/if}
 
+        <!-- Included Services -->
+        <div class="border-t border-outline-variant/10 pt-md">
+          <h2 class="text-h3 font-display font-bold text-on-surface mb-md">{data.t.vehicleDetail.includedTitle}</h2>
+          <ul class="space-y-sm">
+            <li class="flex items-start gap-sm">
+              <span class="material-symbols-outlined text-lg text-secondary mt-0.5">verified_user</span>
+              <span class="text-body-sm text-on-surface">{data.t.vehicleDetail.insurance}</span>
+            </li>
+            <li class="flex items-start gap-sm">
+              <span class="material-symbols-outlined text-lg text-secondary mt-0.5">cleaning_services</span>
+              <span class="text-body-sm text-on-surface">{data.t.vehicleDetail.cleaning}</span>
+            </li>
+            <li class="flex items-start gap-sm">
+              <span class="material-symbols-outlined text-lg text-secondary mt-0.5">local_gas_station</span>
+              <span class="text-body-sm text-on-surface">{data.t.vehicleDetail.refuelService}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="border-t border-outline-variant/10 pt-md">
+          <!-- Deposit Info -->
+          <div class="deposit-info-container flex items-center gap-xs mb-xs relative">
+            <span class="text-body-sm font-semibold text-on-surface">
+              {data.t.vehicleDetail.depositLabel}:
+            </span>
+            <!-- Information Icon (i) -->
+            <button
+              type="button"
+              onclick={() => showDepositInfo = !showDepositInfo}
+              class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant transition-colors"
+              aria-label="Info"
+            >
+              <span class="material-symbols-outlined text-[16px] font-bold">info</span>
+            </button>
+
+            <!-- Tooltip Popover -->
+            {#if showDepositInfo}
+              <div class="absolute left-0 top-7 z-10 w-72 p-md rounded-xl bg-surface-container/95 backdrop-blur-md border border-outline-variant/30 shadow-lg text-body-xs text-on-surface-variant leading-relaxed">
+                {data.t.vehicleDetail.depositInfoText}
+              </div>
+            {/if}
+          </div>
+
+          <!-- Permanent details -->
+          <p class="text-body-xs text-on-surface-variant mb-md leading-relaxed">
+            {data.t.vehicleDetail.permanentDetails}
+          </p>
+
+          <!-- Payment methods images -->
+          <PaymentMethods t={data.t.payments} hideTitle={true} />
+        </div>
+
         <!-- CTA -->
         <div class="flex flex-col sm:flex-row gap-sm pt-sm">
           {#if data.vehicle.available}
@@ -154,6 +218,18 @@
         </div>
       </div>
     </div>
+
+    <!-- Why Rent This Vehicle Description -->
+    {#if data.t.vehicleDescriptions[data.vehicle.slug as keyof typeof data.t.vehicleDescriptions]}
+      <div class="mt-xl border-t border-outline-variant/10 pt-xl flex flex-col items-center text-center">
+        <h2 class="text-h2 font-display font-black tracking-tight text-on-surface mb-md max-w-2xl">
+          {data.t.vehicleDetail.whyIdealTitle}
+        </h2>
+        <p class="text-body-md text-on-surface-variant max-w-3xl leading-relaxed">
+          {data.t.vehicleDescriptions[data.vehicle.slug as keyof typeof data.t.vehicleDescriptions]}
+        </p>
+      </div>
+    {/if}
   </div>
 </main>
 

@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added 2015 Mercedes-AMG GTS to the vehicle inventory list with complete specifications, pricing, deposit, custom detailed descriptions in English and Spanish, and a high-quality WebP asset.
+- Added classic Fiat 500 (1969) to the vehicle inventory list with complete specifications, pricing, deposit, custom detailed description, and a high-quality WebP asset.
+- Disabled (set `available: false`) all older vehicles in the inventory except the Porsche 992 GT3.
+- Added "Included" services section on all vehicle detail pages detailing insurance, cleaning, and a unified refueling policy, with full localized copy.
+- Added full-width centered vehicle descriptions ("Why Rent This Vehicle?") at the bottom of the vehicle details layout, backed by unique bilingual descriptions for all 23 vehicles.
+- Added reusable `PaymentMethods` UI component presenting premium styled SVGs for Visa, Mastercard, and Cash, integrated on both the main landing page and the single vehicle reservation/detail pages with full bilingual i18n support.
+- Added Porsche 992 GT3 with full specifications, image, and availability to the vehicle inventory list.
 - Structured data (JSON-LD) utilizing schema.org specifications across all main routes (Homepage, About, Contact, Inventory list, and Vehicle detail pages) using `WebSite`, `AutoRental`, `CollectionPage`, `ItemList`, and `Car` schemas.
 - Dynamic OpenGraph (OG) and Twitter Card metadata computed at layout level using Svelte's `$derived.by` rune to construct context-aware titles, descriptions, canonical URLs, and imagery.
 - Lighthouse CI configuration (`.lighthouseci/lighthouserc.json`) wiring the `bun run lighthouse` script: collects the home, inventory and localized inventory routes via the preview server and asserts Performance ≥ 0.90 and Accessibility ≥ 0.95.
@@ -19,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Isolated the vehicle filtering and utility unit tests in `vehicles.test.ts` from direct database updates by introducing a static mock dataset, and adjusted database count expectations to match the active catalog.
 - **Performance:** Eliminated initial page load forced reflow by resolving the HTML `lang` attribute dynamically on the server using `transformPageChunk` in `src/hooks.server.ts` and adding a state-change check in `+layout.svelte` to prevent redundant client-side DOM mutations that invalidate style layout calculations.
 - **Performance:** Excluded the 280KB Material Symbols icon font from SvelteKit's critical preloads (`src/hooks.server.ts`), resolving network queue congestion and reducing LCP element render delay by allowing body and headline text fonts to load immediately.
 - **Performance:** Optimized font loading and LCP element render delay by replacing global Fontsource imports with explicit `@font-face` declarations targeting only the Latin subsets for both Inter and Space Grotesk variable fonts, eliminating Cyrillic, Greek, Vietnamese, and Latin-ext font requests (~8 assets removed) and avoiding network queue congestion.

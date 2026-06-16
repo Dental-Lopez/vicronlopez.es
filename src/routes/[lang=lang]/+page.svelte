@@ -8,6 +8,7 @@
   import ReviewsSection from '@/components/domains/landing/ReviewsSection.svelte';
   import ContactSection from '@/components/domains/landing/ContactSection.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
+  import PaymentMethods from '@/components/ui/PaymentMethods.svelte';
   import { jsonLdScript } from '@/lib/jsonLd';
   import type { PageData } from './$types';
 
@@ -65,6 +66,11 @@
   <FeaturedVehicles locale={data.locale} />
   <ServicesSection locale={data.locale} />
   <ReviewsSection locale={data.locale} />
+  <section class="py-lg border-y border-outline-variant/10 bg-surface-container-low/10">
+    <div class="max-w-7xl mx-auto px-8">
+      <PaymentMethods t={data.t.payments} />
+    </div>
+  </section>
   <ContactSection locale={data.locale} />
 </main>
 
