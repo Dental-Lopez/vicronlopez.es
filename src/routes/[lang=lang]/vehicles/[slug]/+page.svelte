@@ -7,11 +7,17 @@
   import PaymentMethods from '@/components/ui/PaymentMethods.svelte';
   import { formatCurrency } from '@/lib/formatters';
   import { jsonLdScript } from '@/lib/jsonLd';
+  import { WHATSAPP_NUMBER } from '@/contact';
+  import { buildBookingMessage } from '@/booking';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
 
   let showDepositInfo = $state(false);
+
+  const bookingMessage = $derived(buildBookingMessage(data.vehicle, $page.url.href, data.t, data.locale));
+  const whatsappBookingUrl = $derived(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(bookingMessage)}`);
+  const emailBookingUrl = $derived(`/${data.locale}${data.t.nav.links.contact}?vehicle=${data.vehicle.slug}`);
 
   const specsEntries = $derived(
     [
@@ -199,19 +205,27 @@
         <div class="flex flex-col sm:flex-row gap-sm pt-sm">
           {#if data.vehicle.available}
             <a
-              href="/{data.locale}{data.t.nav.links.contact}"
-              class="flex-1 text-center bg-primary text-on-primary rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
+              href={emailBookingUrl}
+              class="flex-1 flex items-center justify-center text-center bg-primary text-on-primary rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
             >
               {data.t.vehicleDetail.bookVehicle}
             </a>
+            <a
+              href={whatsappBookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 flex items-center justify-center text-center bg-[#25d366] text-white rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-[#1ebe57] transition-all duration-300 active:scale-95"
+            >
+              {data.t.vehicleDetail.bookWhatsApp}
+            </a>
           {:else}
-            <span class="flex-1 text-center bg-surface-container text-on-surface-variant rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold">
+            <span class="flex-1 flex items-center justify-center text-center bg-surface-container text-on-surface-variant rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold">
               {data.t.vehicleDetail.unavailable}
             </span>
           {/if}
           <a
             href="/{data.locale}{data.t.nav.links.inventory}"
-            class="flex-1 text-center bg-transparent text-on-surface border border-outline rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-surface-container transition-all duration-300"
+            class="flex-1 flex items-center justify-center text-center bg-transparent text-on-surface border border-outline rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-surface-container transition-all duration-300"
           >
             {data.t.vehicleDetail.viewAll}
           </a>

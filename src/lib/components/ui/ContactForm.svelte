@@ -1,5 +1,9 @@
 <script lang="ts">
+  import { page } from '$app/stores';
   import { contactSchema } from '@/schemas/contact';
+  import { getAllVehicles } from '@/lib/vehicles';
+  import { getDictionary, type Locale } from '@/i18n/utils';
+  import { buildBookingMessage } from '@/booking';
 
   interface ContactFormLabels {
     name: string;
@@ -21,13 +25,27 @@
 
   interface Props {
     labels: ContactFormLabels;
+    locale: Locale;
   }
 
-  let { labels }: Props = $props();
+  let { labels, locale }: Props = $props();
 
   type FieldErrors = Partial<Record<'name' | 'email' | 'message', string>>;
 
   let values = $state({ name: '', email: '', phone: '', message: '' });
+
+  // Prefill the message from a `?vehicle=<slug>` query param. Runs client-only
+  // (effects don't run during prerender/SSR, so reading searchParams is safe)
+  // and reactively: switching language re-runs it, retranslating the message.
+  $effect(() => {
+    const slug = $page.url.searchParams.get('vehicle');
+    if (!slug) return;
+    const vehicle = getAllVehicles().find((v) => v.slug === slug);
+    if (!vehicle) return;
+    const t = getDictionary(locale);
+    const url = `${$page.url.origin}/${locale}/${t.nav.slugs.vehicles}/${slug}/`;
+    values.message = buildBookingMessage(vehicle, url, t, locale);
+  });
   let errors = $state<FieldErrors>({});
   let submitted = $state(false);
   let submitting = $state(false);

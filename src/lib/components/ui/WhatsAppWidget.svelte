@@ -1,6 +1,7 @@
 <script lang="ts">
   import { getDictionary } from '@/i18n/utils';
   import type { Locale } from '@/i18n/utils';
+  import { WHATSAPP_NUMBER } from '@/contact';
 
   interface Props {
     locale: Locale;
@@ -9,7 +10,7 @@
   let { locale }: Props = $props();
   const t = $derived.by(() => getDictionary(locale));
 
-  const WHATSAPP_URL = 'https://wa.me/34698133249';
+  const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 </script>
 
 <a

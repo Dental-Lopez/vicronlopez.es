@@ -99,6 +99,7 @@
 
         <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/20 p-lg shadow-sm">
           <ContactForm
+            locale={data.locale}
             labels={{
               name: data.t.contact.name,
               namePlaceholder: data.t.contact.namePlaceholder,

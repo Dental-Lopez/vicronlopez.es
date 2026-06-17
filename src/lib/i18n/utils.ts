@@ -1,3 +1,4 @@
+import { browser } from '$app/environment';
 import { en } from './en';
 import { es } from './es';
 import type { Dictionary } from './en';
@@ -23,6 +24,11 @@ export function getLocalizedPath(url: URL, targetLocale: Locale): string {
   const tCurrent = getDictionary(currentLocale);
   const tTarget = getDictionary(targetLocale);
 
+  // Preserve the query string when switching language (so a prefilled contact
+  // form survives the switch). Read it only in the browser — accessing
+  // `url.search` during prerender throws, and prerendered pages have no query.
+  const search = browser ? url.search : '';
+
   // Remove locale prefix for matching
   const pathWithoutLocale = url.pathname.replace(`/${currentLocale}`, '') || '/';
 
@@ -32,7 +38,7 @@ export function getLocalizedPath(url: URL, targetLocale: Locale): string {
   )?.[0] as keyof typeof tTarget.nav.links | undefined;
 
   if (linkKey) {
-    return `/${targetLocale}${tTarget.nav.links[linkKey]}`;
+    return `/${targetLocale}${tTarget.nav.links[linkKey]}${search}`;
   }
 
   // Fallback for non-mapped routes (like vehicle details)
@@ -44,8 +50,8 @@ export function getLocalizedPath(url: URL, targetLocale: Locale): string {
       parts[2] = tTarget.nav.slugs.vehicles;
     }
   } else {
-    return `/${targetLocale}${url.pathname}`;
+    return `/${targetLocale}${url.pathname}${search}`;
   }
 
-  return parts.join('/').replace(/\/$/, '') + '/';
+  return parts.join('/').replace(/\/$/, '') + '/' + search;
 }
