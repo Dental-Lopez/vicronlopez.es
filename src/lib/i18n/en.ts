@@ -132,6 +132,13 @@ export const en = {
     sitemap: 'Sitemap',
     phone: '+34 698 13 32 49',
     email: 'info@vicronlopez.es',
+    aboutTitle: 'About Vicron Lopez',
+    aboutText: 'Our sports and luxury car rental service has an office in the heart of Ourense. Thanks to this, we are exactly where you are - without leaving Ourense during your trip. The entire process of Luxury Car Rental is made as simple and fast as possible so you can focus and enjoy your stay.',
+    findUsTitle: 'Find us there',
+    licenseText: 'Licensed by the City Council of Ourense',
+    elegantTitle: 'Elegant and powerful',
+    elegantText: 'Do you want to rent a luxury car, but still don\'t know which one? Check out our rental cars. You can also contact us directly and our experts will find the most perfect vehicle for your character and style.',
+    rentCta: 'Rent a luxury car 📅',
   },
   theme: {
     toggleLight: 'Switch to light mode',

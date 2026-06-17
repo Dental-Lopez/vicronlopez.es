@@ -134,6 +134,13 @@ export const es: Dictionary = {
     sitemap: 'Mapa del sitio',
     phone: '+34 698 13 32 49',
     email: 'info@vicronlopez.es',
+    aboutTitle: 'Acerca de Vicron Lopez',
+    aboutText: 'Nuestro alquiler de coches deportivos y de lujo tiene una oficina en el corazón de Ourense. Gracias a ello, estamos exactamente donde usted está - sin salir de Ourense durante su viaje. Todo el proceso de Alquiler de Coches de Lujo se hace lo más sencillo y rápido posible para que pueda centrarse y disfrutar de su estancia.',
+    findUsTitle: 'Encuéntranos allí',
+    licenseText: 'Con licencia en el Ayuntamiento de Ourense',
+    elegantTitle: 'Elegante y potente',
+    elegantText: '¿Quieres alquilar un coche de lujo, pero aún no sabes cuál? Consulta nuestros coches de alquiler. También puede contactarnos directamente y nuestros expertos se adaptarán al automóvil más perfecto para su carácter y estilo.',
+    rentCta: 'Alquilar un coche de lujo 📅',
   },
   theme: {
     toggleLight: 'Cambiar a modo claro',
