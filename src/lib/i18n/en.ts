@@ -64,6 +64,12 @@ export const en = {
     filterLabel: 'Filter',
     getStarted: 'Get Started',
   },
+  welcome: {
+    badge: 'Premium Fleet',
+    title: 'Luxury Car Rental in Ourense',
+    subtitle: 'The finest luxury and performance vehicles are waiting for you at Vicron Lopez Ourense.',
+    description: 'Experience Ourense with an unmatched level of service, completely customized to your individual requirements.',
+  },
   filters: {
     all: 'All',
     forRent: 'For Rent',

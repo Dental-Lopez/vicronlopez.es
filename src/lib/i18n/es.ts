@@ -66,6 +66,12 @@ export const es: Dictionary = {
     filterLabel: 'Filtrar',
     getStarted: 'Comenzar',
   },
+  welcome: {
+    badge: 'Flota Premium',
+    title: 'Alquiler de Coches de Lujo en Ourense',
+    subtitle: 'Los vehículos de lujo y deportivos más exclusivos te esperan en Vicron Lopez Ourense.',
+    description: 'Alquilá un coche en Ourense con el más alto nivel de servicio, adaptado individualmente para vos.',
+  },
   filters: {
     all: 'Todos',
     forRent: 'En Alquiler',

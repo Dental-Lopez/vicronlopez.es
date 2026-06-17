@@ -2,6 +2,7 @@
   import { page } from '$app/stores';
   import TopNavBar from '@/components/domains/nav/TopNavBar.svelte';
   import HeroSection from '@/components/domains/shared/HeroSection.svelte';
+  import WelcomeSection from '@/components/domains/landing/WelcomeSection.svelte';
   import OverviewSection from '@/components/domains/landing/OverviewSection.svelte';
   import FeaturedVehicles from '@/components/domains/vehicles/FeaturedVehicles.svelte';
   import ServicesSection from '@/components/domains/landing/ServicesSection.svelte';
@@ -62,6 +63,7 @@
 
 <main>
   <HeroSection locale={data.locale} />
+  <WelcomeSection locale={data.locale} />
   <OverviewSection locale={data.locale} />
   <FeaturedVehicles locale={data.locale} />
   <ServicesSection locale={data.locale} />

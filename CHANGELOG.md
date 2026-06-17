@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added a premium, localized Welcome section below the Hero section on the homepage highlighting luxury car rental in Ourense, with full bilingual support in English and Spanish.
+
 - Added 2015 Mercedes-AMG GTS to the vehicle inventory list with complete specifications, pricing, deposit, custom detailed descriptions in English and Spanish, and a high-quality WebP asset.
 - Added classic Fiat 500 (1969) to the vehicle inventory list with complete specifications, pricing, deposit, custom detailed description, and a high-quality WebP asset.
 - Disabled (set `available: false`) all older vehicles in the inventory except the Porsche 992 GT3.
