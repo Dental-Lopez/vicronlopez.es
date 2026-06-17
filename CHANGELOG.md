@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Updated customer reviews in English and Spanish to mention the active vehicles currently in the fleet (Porsche 992 GT3, classic Fiat 500, and Mercedes AMG GTS) rather than disabled ones.
 - Isolated the vehicle filtering and utility unit tests in `vehicles.test.ts` from direct database updates by introducing a static mock dataset, and adjusted database count expectations to match the active catalog.
 - **Performance:** Eliminated initial page load forced reflow by resolving the HTML `lang` attribute dynamically on the server using `transformPageChunk` in `src/hooks.server.ts` and adding a state-change check in `+layout.svelte` to prevent redundant client-side DOM mutations that invalidate style layout calculations.
 - **Performance:** Excluded the 280KB Material Symbols icon font from SvelteKit's critical preloads (`src/hooks.server.ts`), resolving network queue congestion and reducing LCP element render delay by allowing body and headline text fonts to load immediately.
