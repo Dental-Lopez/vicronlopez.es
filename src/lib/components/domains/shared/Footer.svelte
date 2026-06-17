@@ -71,36 +71,7 @@
             </a>
           </li>
         </ul>
-        <!-- Social Icons in Yellow Circles -->
-        <div class="flex items-center gap-md pt-2">
-          <a
-            href="https://wa.me/34698133249"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-10 h-10 rounded-full bg-amber-400 hover:bg-amber-500 text-black flex items-center justify-center transition-all duration-300 active:scale-90 shadow-md"
-            aria-label="WhatsApp"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 12.008 0c3.202.001 6.212 1.249 8.477 3.518s3.513 5.278 3.513 8.484c-.004 6.557-5.341 11.905-11.951 11.905-2.005-.001-3.974-.505-5.732-1.47L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.852.002-2.632-1.023-5.105-2.887-6.97C16.584 1.968 14.117.943 11.99.943c-5.438 0-9.864 4.42-9.868 9.853-.001 1.762.476 3.483 1.38 5.006L2.46 21.571l5.867-1.537zm10.882-6.772c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-          </a>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-10 h-10 rounded-full bg-amber-400 hover:bg-amber-500 text-black flex items-center justify-center transition-all duration-300 active:scale-90 shadow-md"
-            aria-label="Instagram"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
-          <a
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-10 h-10 rounded-full bg-amber-400 hover:bg-amber-500 text-black flex items-center justify-center transition-all duration-300 active:scale-90 shadow-md"
-            aria-label="Facebook"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-          </a>
-        </div>
+
       </div>
 
       <!-- Column 3: Elegante y potente -->
@@ -116,7 +87,7 @@
         <div class="pt-4">
           <a
             href={`/${locale}${t.nav.links.inventory}`}
-            class="inline-flex items-center gap-sm bg-amber-400 text-black px-lg py-3 rounded-full hover:bg-amber-500 transition-all duration-300 active:scale-95 font-display text-label-lg font-bold shadow-lg shadow-amber-400/10"
+            class="inline-flex items-center gap-sm bg-primary text-on-primary px-lg py-3 rounded-full hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95 font-display text-label-lg font-bold shadow-lg shadow-primary/20"
           >
             {t.footer.rentCta}
           </a>

@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Redesigned the website footer into a 3-column layout featuring an about section, payment method icons, contact/address details (phone, location, hours, license), social links, and CTAs, fully localized in English and Spanish.
+- Redesigned the website footer into a 3-column layout featuring an about section, payment method icons, contact/address details (phone, location, hours, license), and a theme-aligned CTA button, fully localized in English and Spanish.
 - Updated `PaymentMethods` component to display all payment options available in the project (Visa, Mastercard, Maestro, Amex, Apple Pay, Google Pay, PayPal, SEPA, and Cash) by reading from `.svg` files in `static/assets/images/` and translating their labels in dictionaries.
 - Updated the website contact phone number and WhatsApp widget link to +34 698 13 32 49 with clickable tel: links and updated translation strings.
 - Updated customer reviews in English and Spanish to mention the active vehicles currently in the fleet (Porsche 992 GT3, classic Fiat 500, and Mercedes AMG GTS) rather than disabled ones.
