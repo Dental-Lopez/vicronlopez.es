@@ -21,6 +21,8 @@
     { id: 'sepa', label: t.payments.sepa, icon: '/assets/images/sepa.svg' },
     { id: 'cash', label: t.payments.cash, icon: '/assets/images/cash.svg' }
   ]);
+
+  const MAPS_FULL_URL = 'https://www.google.com/maps/place/Ourense,+Province+of+Ourense/@42.3383925,-7.8842851,14z';
 </script>
 
 <footer class="bg-surface-container-lowest border-t border-outline-variant/30 py-xl mt-auto">
@@ -57,7 +59,9 @@
           </li>
           <li class="flex items-center gap-sm">
             <span class="material-symbols-outlined text-primary text-xl">location_on</span>
-            <span>Ourense, Galicia, España</span>
+            <a href={MAPS_FULL_URL} target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline transition-colors">
+              Ourense, Galicia, España
+            </a>
           </li>
           <li class="flex items-center gap-sm">
             <span class="material-symbols-outlined text-primary text-xl">schedule</span>
