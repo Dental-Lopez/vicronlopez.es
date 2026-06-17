@@ -82,7 +82,7 @@
 
     <!-- Pagination Dots -->
     <div class="absolute bottom-md left-1/2 -translate-x-1/2 z-10 flex items-center gap-xs px-xs py-1.5 rounded-full bg-black/25 dark:bg-white/5 backdrop-blur-[4px] border border-white/10 dark:border-white/5">
-      {#each images as _, index}
+      {#each images as _img, index}
         <button
           type="button"
           onclick={() => scrollTo(index)}
