@@ -117,6 +117,10 @@
         <a href={`/${locale}${t.nav.links.cookies}`} class="text-on-surface-variant hover:text-primary transition-colors">
           {t.footer.cookies}
         </a>
+        <span class="text-on-surface-variant/30">•</span>
+        <a href={`/${locale}${t.nav.links.sitemap}`} class="text-on-surface-variant hover:text-primary transition-colors">
+          {t.footer.sitemap}
+        </a>
       </div>
 
       <div class="flex items-center space-x-lg">

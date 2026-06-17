@@ -53,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed Cloudflare Workers build error by restoring the sitemap link in the footer bottom links, ensuring SvelteKit prerender crawling successfully discovers the sitemap route.
 - Fixed WhatsApp widget unclickability caused by the PWA Installer and Cookie Banner intermediate wrapper elements intercepting pointer events.
 - **Accessibility (a11y):** Resolved ARIA violation where hidden containers (`[aria-hidden="true"]`) contained focusable descendants (links and buttons). Added the `inert` attribute natively (`inert={!visible}`) to `CookieBanner` and `PWAInstaller` to fully disable keyboard tabbing and screen reader visibility of their children when hidden.
 - Blank page in `vite dev` caused by a `@sveltejs/vite-plugin-svelte` v5 / Vite 7 mismatch (the plugin upgrade to v6 resolves the corrupted dependency optimization).
