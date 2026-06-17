@@ -15,8 +15,8 @@ export const en = {
     reviews: 'Reviews',
     services: 'Services',
     signIn: 'Sign In',
-    phone: '+34 600 123 456',
-    callAria: 'Call us at +34 600 123 456',
+    phone: '+34 698 13 32 49',
+    callAria: 'Call us at +34 698 13 32 49',
     // New unified navigation structure
     links: {
       inventory: '/vehicles/',
@@ -130,7 +130,7 @@ export const en = {
     contact: 'Contact',
     company: 'Company',
     sitemap: 'Sitemap',
-    phone: '+34 600 123 456',
+    phone: '+34 698 13 32 49',
     email: 'info@vicronlopez.es',
   },
   theme: {

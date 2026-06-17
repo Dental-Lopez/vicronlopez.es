@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated `PaymentMethods` component to display all payment options available in the project (Visa, Mastercard, Maestro, Amex, Apple Pay, Google Pay, PayPal, SEPA, and Cash) by reading from `.svg` files in `static/assets/images/` and translating their labels in dictionaries.
+- Updated the website contact phone number and WhatsApp widget link to +34 698 13 32 49 with clickable tel: links and updated translation strings.
 - Updated customer reviews in English and Spanish to mention the active vehicles currently in the fleet (Porsche 992 GT3, classic Fiat 500, and Mercedes AMG GTS) rather than disabled ones.
 - Isolated the vehicle filtering and utility unit tests in `vehicles.test.ts` from direct database updates by introducing a static mock dataset, and adjusted database count expectations to match the active catalog.
 - **Performance:** Eliminated initial page load forced reflow by resolving the HTML `lang` attribute dynamically on the server using `transformPageChunk` in `src/hooks.server.ts` and adding a state-change check in `+layout.svelte` to prevent redundant client-side DOM mutations that invalidate style layout calculations.
@@ -51,6 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed WhatsApp widget unclickability caused by the PWA Installer and Cookie Banner intermediate wrapper elements intercepting pointer events.
 - **Accessibility (a11y):** Resolved ARIA violation where hidden containers (`[aria-hidden="true"]`) contained focusable descendants (links and buttons). Added the `inert` attribute natively (`inert={!visible}`) to `CookieBanner` and `PWAInstaller` to fully disable keyboard tabbing and screen reader visibility of their children when hidden.
 - Blank page in `vite dev` caused by a `@sveltejs/vite-plugin-svelte` v5 / Vite 7 mismatch (the plugin upgrade to v6 resolves the corrupted dependency optimization).
 - Cloudflare deployment check failure by creating `wrangler.toml` with `assets` settings and generating `worker-configuration.d.ts` definitions.

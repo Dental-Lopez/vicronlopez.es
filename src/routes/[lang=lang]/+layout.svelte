@@ -129,14 +129,12 @@
 
 <!-- WhatsApp Widget Wrapper: isolated fixed position with CSS transform translations -->
 <div
-  class="fixed bottom-6 right-6 z-[80] pointer-events-none whatsapp-wrapper"
+  class="fixed bottom-6 right-6 z-[80] whatsapp-wrapper"
   class:cookie-visible={isCookieVisible && !isPwaVisible}
   class:pwa-visible={!isCookieVisible && isPwaVisible}
   class:both-visible={isCookieVisible && isPwaVisible}
 >
-  <div class="pointer-events-auto">
-    <WhatsAppWidget locale={data.locale} />
-  </div>
+  <WhatsAppWidget locale={data.locale} />
 </div>
 
 <!-- PWA Installer Wrapper: isolated fixed position with CSS transform translation -->
@@ -144,16 +142,12 @@
   class="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 z-[85] pointer-events-none pwa-wrapper"
   class:cookie-visible={isCookieVisible}
 >
-  <div class="pointer-events-auto w-full md:w-auto">
-    <PWAInstaller locale={data.locale} bind:visible={isPwaVisible} />
-  </div>
+  <PWAInstaller locale={data.locale} bind:visible={isPwaVisible} />
 </div>
 
 <!-- Cookie Banner Wrapper: isolated fixed position -->
 <div class="fixed bottom-0 left-0 right-0 z-[90] pointer-events-none p-6">
-  <div class="pointer-events-auto">
-    <CookieBanner locale={data.locale} bind:visible={isCookieVisible} />
-  </div>
+  <CookieBanner locale={data.locale} bind:visible={isCookieVisible} />
 </div>
 
 <style>

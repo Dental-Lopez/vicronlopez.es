@@ -92,7 +92,7 @@
 
         <!-- Phone -->
         <a
-          href="tel:+34600123456"
+          href="tel:+34698133249"
           class="inline-flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:rounded-full bg-primary text-on-primary md:px-lg md:py-2.5 rounded-full hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-90"
           aria-label={t.nav.callAria}
         >

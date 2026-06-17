@@ -17,8 +17,8 @@ export const es: Dictionary = {
     reviews: 'Reseñas',
     services: 'Servicios',
     signIn: 'Ingresar',
-    phone: '+34 600 123 456',
-    callAria: 'Llamanos al +34 600 123 456',
+    phone: '+34 698 13 32 49',
+    callAria: 'Llamanos al +34 698 13 32 49',
     // Nueva estructura de navegación unificada
     links: {
       inventory: '/vehiculos/',
@@ -132,7 +132,7 @@ export const es: Dictionary = {
     contact: 'Contacto',
     company: 'Compañía',
     sitemap: 'Mapa del sitio',
-    phone: '+34 600 123 456',
+    phone: '+34 698 13 32 49',
     email: 'info@vicronlopez.es',
   },
   theme: {

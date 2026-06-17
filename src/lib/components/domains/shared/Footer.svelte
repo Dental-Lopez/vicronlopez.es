@@ -64,7 +64,7 @@
         {t.footer.copyright}
       </p>
       <div class="flex items-center gap-md">
-        <a href="tel:+34600123456" class="text-primary font-bold font-body text-body-sm hover:underline transition-colors">
+        <a href="tel:+34698133249" class="text-primary font-bold font-body text-body-sm hover:underline transition-colors">
           {t.footer.phone}
         </a>
         <span class="text-on-surface-variant/30">•</span>

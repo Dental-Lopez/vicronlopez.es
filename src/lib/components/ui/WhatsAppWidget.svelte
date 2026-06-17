@@ -9,7 +9,7 @@
   let { locale }: Props = $props();
   const t = $derived.by(() => getDictionary(locale));
 
-  const WHATSAPP_URL = 'https://wa.me/34600123456';
+  const WHATSAPP_URL = 'https://wa.me/34698133249';
 </script>
 
 <a

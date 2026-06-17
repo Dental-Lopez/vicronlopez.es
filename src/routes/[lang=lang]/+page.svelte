@@ -32,7 +32,7 @@
           "name": data.t.site.name,
           "url": `https://www.vicronlopez.es/${data.locale}/`,
           "image": "https://www.vicronlopez.es/icons/icon-512.png",
-          "telephone": "+34 600 123 456",
+          "telephone": "+34 698 13 32 49",
           "email": "info@vicronlopez.es",
           "priceRange": "$$",
           "address": {

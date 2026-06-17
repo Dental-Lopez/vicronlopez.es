@@ -28,7 +28,7 @@
           "name": data.t.site.name,
           "url": `https://www.vicronlopez.es/${data.locale}/`,
           "image": "https://www.vicronlopez.es/icons/icon-512.png",
-          "telephone": "+34 600 123 456",
+          "telephone": "+34 698 13 32 49",
           "email": "info@vicronlopez.es",
           "address": {
             "@type": "PostalAddress",
@@ -81,10 +81,10 @@
             <span class="material-symbols-outlined text-xl text-primary">location_on</span>
             <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Ourense, Galicia, España</span>
           </a>
-          <a href="tel:+34600123456"
+          <a href="tel:+34698133249"
             class="group flex items-center gap-sm p-md bg-surface-container rounded-xl border border-outline-variant/20 hover:border-primary/30 hover:bg-surface-container-high transition-all">
             <span class="material-symbols-outlined text-xl text-primary">phone</span>
-            <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">+34 600 123 456</span>
+            <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">+34 698 13 32 49</span>
           </a>
           <a href="mailto:{data.t.contact.emailLabel}"
             class="group flex items-center gap-sm p-md bg-surface-container rounded-xl border border-outline-variant/20 hover:border-primary/30 hover:bg-surface-container-high transition-all">

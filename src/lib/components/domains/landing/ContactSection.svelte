@@ -34,7 +34,7 @@
         {t.landingContact.cta}
       </a>
       <a
-        href="tel:+34600123456"
+        href="tel:+34698133249"
         class="rounded-full border border-outline-variant/40 text-on-surface px-xl py-3 text-label-caps uppercase tracking-[0.05em] font-semibold font-body hover:bg-surface-container transition-all duration-300 active:scale-95 flex items-center gap-sm"
       >
         <span class="material-symbols-outlined text-primary text-xl">phone</span>
