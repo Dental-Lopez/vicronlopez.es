@@ -15,6 +15,12 @@
         "fuel": "Gasoline"
       },
       "image": "/vehicles/porsche-992-gt3.webp",
+      "images": [
+        "/vehicles/porsche-992-gt3-1.webp",
+        "/vehicles/porsche-992-gt3-2.webp",
+        "/vehicles/porsche-992-gt3-3.webp",
+        "/vehicles/porsche-992-gt3-4.webp"
+      ],
       "featured": true,
       "available": true,
       "deposit": 1500
@@ -33,6 +39,12 @@
         "fuel": "Gasoline"
       },
       "image": "/vehicles/fiat-500-1969.webp",
+      "images": [
+        "/vehicles/fiat-500-1969-1.webp",
+        "/vehicles/fiat-500-1969-2.webp",
+        "/vehicles/fiat-500-1969-3.webp",
+        "/vehicles/fiat-500-1969-4.webp"
+      ],
       "featured": true,
       "available": true,
       "deposit": 500
@@ -52,6 +64,12 @@
         "fuel": "Gasoline"
       },
       "image": "/vehicles/mercedes-amg-gts.webp",
+      "images": [
+        "/vehicles/mercedes-amg-gts-1.webp",
+        "/vehicles/mercedes-amg-gts-2.webp",
+        "/vehicles/mercedes-amg-gts-3.webp",
+        "/vehicles/mercedes-amg-gts-4.webp"
+      ],
       "featured": true,
       "available": true,
       "deposit": 1500

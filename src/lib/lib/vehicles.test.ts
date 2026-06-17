@@ -8,6 +8,8 @@ import {
   getUniqueCategories,
 } from './vehicles';
 import type { Vehicle } from '../schemas/vehicle';
+import { getVehicleImages } from './vehicleImages';
+
 
 const mockVehicles: Vehicle[] = [
   {
@@ -265,3 +267,32 @@ describe('getUniqueCategories', () => {
     expect(getUniqueCategories([])).toHaveLength(0);
   });
 });
+
+describe('getVehicleImages', () => {
+  it('returns multiple image assets for active vehicles', () => {
+    for (const v of getAllVehicles()) {
+      const images = getVehicleImages(v.slug);
+      expect(images).toBeInstanceOf(Array);
+      // Cada vehículo activo debe tener al menos la imagen principal y las variantes (4 en total)
+      expect(images.length).toBe(4);
+    }
+  });
+
+  it('returns empty array for non-existent vehicle slug', () => {
+    const images = getVehicleImages('non-existent-slug');
+    expect(images).toEqual([]);
+  });
+});
+
+describe('vehicleSchema validation with images', () => {
+  it('every active vehicle has an images list in data', () => {
+    for (const v of getAllVehicles()) {
+      expect(v.images).toBeInstanceOf(Array);
+      expect(v.images?.length).toBe(4);
+      for (const imgPath of v.images || []) {
+        expect(imgPath).toMatch(/^\/vehicles\/.+-\d+\.webp$/);
+      }
+    }
+  });
+});
+

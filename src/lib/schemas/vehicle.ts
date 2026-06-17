@@ -26,6 +26,7 @@ export const vehicleSchema = z.object({
     fuel: z.string().optional(),
   }),
   image: z.string(),
+  images: z.array(z.string()).optional(),
   featured: z.boolean(),
   available: z.boolean(),
   deposit: z.number().int().positive().optional(),

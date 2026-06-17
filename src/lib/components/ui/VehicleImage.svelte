@@ -1,8 +1,10 @@
 <script lang="ts">
   import { getVehicleImage } from '@/lib/vehicleImages';
+  import type { Picture } from '@sveltejs/enhanced-img';
 
   interface Props {
-    slug: string;
+    slug?: string;
+    picture?: Picture;
     alt: string;
     class?: string;
     sizes?: string;
@@ -12,6 +14,7 @@
 
   let {
     slug,
+    picture,
     alt,
     class: klass,
     sizes,
@@ -19,9 +22,10 @@
     fetchpriority,
   }: Props = $props();
 
-  const pic = $derived(getVehicleImage(slug));
+  const pic = $derived(picture ?? (slug ? getVehicleImage(slug) : undefined));
 </script>
 
 {#if pic}
   <enhanced:img src={pic} {alt} class={klass} {sizes} {loading} {fetchpriority} />
 {/if}
+

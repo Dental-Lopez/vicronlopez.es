@@ -3,7 +3,7 @@
   import TopNavBar from '@/components/domains/nav/TopNavBar.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
   import Badge from '@/components/ui/Badge.svelte';
-  import VehicleImage from '@/components/ui/VehicleImage.svelte';
+  import VehicleCarousel from '@/components/ui/VehicleCarousel.svelte';
   import PaymentMethods from '@/components/ui/PaymentMethods.svelte';
   import { formatCurrency } from '@/lib/formatters';
   import { jsonLdScript } from '@/lib/jsonLd';
@@ -89,15 +89,12 @@
     </a>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-xl items-start">
-      <!-- Image -->
+      <!-- Image Carousel -->
       <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/20">
-        <VehicleImage
+        <VehicleCarousel
           slug={data.vehicle.slug}
           alt="{data.vehicle.brand} {data.vehicle.model}"
-          class="w-full h-full object-contain p-8"
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          loading="eager"
-          fetchpriority="high"
+          class="w-full h-full"
         />
         {#if !data.vehicle.available}
           <div class="absolute inset-0 bg-surface/70 backdrop-blur-sm flex items-center justify-center rounded-xl">

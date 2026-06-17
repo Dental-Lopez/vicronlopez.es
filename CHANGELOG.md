@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added a responsive, horizontal image carousel (`VehicleCarousel`) with scroll snap, active pagination indicators, and glassmorphic navigation controls on the single vehicle details page.
+- Added 4 high-quality image variants (WEBP/AVIF formats) from different camera angles (front, profile, rear, three-quarter) for all active vehicles (Porsche 992 GT3, Fiat 500, Mercedes-AMG GTS) maintaining a consistent dark studio lighting and backdrop.
+- Added support and validation for multiple images per vehicle: updated `vehicleSchema` (Zod validation), database metadata in `vehicles.json`, and static asset map in `vehicleImages.ts` (`getVehicleImages`).
 - Added a premium, localized Welcome section below the Hero section on the homepage highlighting luxury car rental in Ourense, with full bilingual support in English and Spanish.
 
 - Added 2015 Mercedes-AMG GTS to the vehicle inventory list with complete specifications, pricing, deposit, custom detailed descriptions in English and Spanish, and a high-quality WebP asset.
@@ -28,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Updated the image carousel layout to use `object-cover` and removed interior padding, allowing vehicle image assets to expand fully to the rounded corners of their container on the details page.
 - Redesigned the website footer into a 3-column layout featuring an about section, payment method icons, contact/address details (phone, location with a Google Maps link, hours, license), and a theme-aligned CTA button, fully localized in English and Spanish.
 - Updated `PaymentMethods` component to display all payment options available in the project (Visa, Mastercard, Maestro, Amex, Apple Pay, Google Pay, PayPal, SEPA, and Cash) by reading from `.svg` files in `static/assets/images/` and translating their labels in dictionaries.
 - Updated the website contact phone number and WhatsApp widget link to +34 698 13 32 49 with clickable tel: links and updated translation strings.
