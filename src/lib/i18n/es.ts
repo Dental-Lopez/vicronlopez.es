@@ -189,6 +189,12 @@ export const es: Dictionary = {
     title: 'Métodos de Pago Soportados',
     visa: 'Visa',
     mastercard: 'Mastercard',
+    maestro: 'Maestro',
+    amex: 'American Express',
+    paypal: 'PayPal',
+    applePay: 'Apple Pay',
+    googlePay: 'Google Pay',
+    sepa: 'Transferencia SEPA',
     cash: 'Efectivo',
   },
   vehicleDescriptions: {

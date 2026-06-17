@@ -187,6 +187,12 @@ export const en = {
     title: 'Supported Payment Methods',
     visa: 'Visa',
     mastercard: 'Mastercard',
+    maestro: 'Maestro',
+    amex: 'American Express',
+    paypal: 'PayPal',
+    applePay: 'Apple Pay',
+    googlePay: 'Google Pay',
+    sepa: 'SEPA Transfer',
     cash: 'Cash',
   },
   vehicleDescriptions: {

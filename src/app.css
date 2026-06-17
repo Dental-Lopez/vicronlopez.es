@@ -133,6 +133,9 @@
   --text-body-sm: 0.875rem;
   --text-body-sm--line-height: 1.5;
 
+  --text-body-xs: 0.75rem;
+  --text-body-xs--line-height: 1.4;
+
   --text-label-caps: 0.75rem;
   --text-label-caps--line-height: 1.2;
   --tracking-label-caps: 0.05em;
