@@ -14,11 +14,6 @@
   const paymentMethods = $derived([
     { id: 'visa', label: t.payments.visa, icon: '/assets/images/visa.svg' },
     { id: 'mastercard', label: t.payments.mastercard, icon: '/assets/images/mastercard.svg' },
-    { id: 'maestro', label: t.payments.maestro, icon: '/assets/images/maestro.svg' },
-    { id: 'amex', label: t.payments.amex, icon: '/assets/images/amex.svg' },
-    { id: 'paypal', label: t.payments.paypal, icon: '/assets/images/paypal.svg' },
-    { id: 'applePay', label: t.payments.applePay, icon: '/assets/images/apple-pay.svg' },
-    { id: 'googlePay', label: t.payments.googlePay, icon: '/assets/images/google-pay.svg' },
     { id: 'sepa', label: t.payments.sepa, icon: '/assets/images/sepa.svg' },
     { id: 'cash', label: t.payments.cash, icon: '/assets/images/cash.svg' }
   ]);
