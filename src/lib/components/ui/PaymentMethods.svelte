@@ -12,11 +12,6 @@
   const methods = $derived([
     { id: 'visa', label: t.visa, icon: '/assets/images/visa.svg' },
     { id: 'mastercard', label: t.mastercard, icon: '/assets/images/mastercard.svg' },
-    { id: 'maestro', label: t.maestro, icon: '/assets/images/maestro.svg' },
-    { id: 'amex', label: t.amex, icon: '/assets/images/amex.svg' },
-    { id: 'paypal', label: t.paypal, icon: '/assets/images/paypal.svg' },
-    { id: 'apple-pay', label: t.applePay, icon: '/assets/images/apple-pay.svg' },
-    { id: 'google-pay', label: t.googlePay, icon: '/assets/images/google-pay.svg' },
     { id: 'sepa', label: t.sepa, icon: '/assets/images/sepa.svg' },
     { id: 'cash', label: t.cash, icon: '/assets/images/cash.svg' }
   ] as const);
