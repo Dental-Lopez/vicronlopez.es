@@ -30,4 +30,20 @@ describe('buildBookingMessage', () => {
     expect(buildBookingMessage(vehicle, url, es, 'es')).toContain(formatCurrency(900, 'es'));
     expect(buildBookingMessage(vehicle, url, en, 'en')).toContain(formatCurrency(900, 'en'));
   });
+
+  it('includes booking dates in Spanish if dates are provided', () => {
+    const dates = { startDate: '19 Jun 2026', startTime: '14:00', endDate: '28 Jun 2026', endTime: '14:00' };
+    const message = buildBookingMessage(vehicle, url, es, 'es', dates);
+    expect(message).toContain('Fechas de reserva:');
+    expect(message).toContain('- Desde: 19 Jun 2026 a las 14:00');
+    expect(message).toContain('- Hasta: 28 Jun 2026 a las 14:00');
+  });
+
+  it('includes booking dates in English if dates are provided', () => {
+    const dates = { startDate: '19 Jun 2026', startTime: '14:00', endDate: '28 Jun 2026', endTime: '14:00' };
+    const message = buildBookingMessage(vehicle, url, en, 'en', dates);
+    expect(message).toContain('Booking Dates:');
+    expect(message).toContain('- From: 19 Jun 2026 at 14:00');
+    expect(message).toContain('- To: 28 Jun 2026 at 14:00');
+  });
 });

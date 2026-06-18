@@ -10,15 +10,54 @@
   import { business, absoluteUrl } from '@/business';
   import { car, breadcrumb, vehicleUrl } from '@/seo/schema';
   import { buildBookingMessage } from '@/booking';
+  import DateTimePicker from '@/components/ui/DateTimePicker.svelte';
+  import { SvelteDate } from 'svelte/reactivity';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
 
   let showDepositInfo = $state(false);
 
-  const bookingMessage = $derived(buildBookingMessage(data.vehicle, $page.url.href, data.t, data.locale));
+  // Date time selector state
+  const today = new SvelteDate();
+  today.setHours(0, 0, 0, 0);
+
+  const defaultEndDate = new SvelteDate(today);
+  defaultEndDate.setDate(today.getDate() + 3);
+
+  let startDate = $state(today);
+  let startTime = $state('14:00');
+  let endDate = $state<Date | null>(defaultEndDate);
+  let endTime = $state('14:00');
+
+  // Format dates for the message
+  function formatDateString(date: Date | null, loc: string): string {
+    if (!date) return '';
+    const day = date.getDate();
+    const monthNamesShort = loc === 'es'
+      ? ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+      : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${day} ${monthNamesShort[date.getMonth()]} ${date.getFullYear()}`;
+  }
+
+  const bookingDates = $derived({
+    startDate: formatDateString(startDate, data.locale),
+    startTime,
+    endDate: formatDateString(endDate, data.locale),
+    endTime
+  });
+
+  const isBookingValid = $derived(startDate !== null && endDate !== null && startTime !== '' && endTime !== '');
+
+  const bookingMessage = $derived(buildBookingMessage(data.vehicle, $page.url.href, data.t, data.locale, endDate ? bookingDates : undefined));
   const whatsappBookingUrl = $derived(`https://wa.me/${business.whatsapp}?text=${encodeURIComponent(bookingMessage)}`);
-  const emailBookingUrl = $derived(`/${data.locale}${data.t.nav.links.contact}?vehicle=${data.vehicle.slug}`);
+  const emailBookingUrl = $derived(
+    `/${data.locale}${data.t.nav.links.contact}?vehicle=${data.vehicle.slug}` +
+    `&startDate=${encodeURIComponent(formatDateString(startDate, data.locale))}` +
+    `&startTime=${encodeURIComponent(startTime)}` +
+    `&endDate=${encodeURIComponent(formatDateString(endDate, data.locale))}` +
+    `&endTime=${encodeURIComponent(endTime)}`
+  );
 
   const specsEntries = $derived(
     [
@@ -186,20 +225,45 @@
           <PaymentMethods t={data.t.payments} hideTitle={true} />
         </div>
 
+        <!-- Date Time Pickers -->
+        {#if data.vehicle.available}
+          <div class="border-t border-outline-variant/10 pt-md">
+            <h2 class="text-h3 font-display font-bold text-on-surface mb-md">
+              {data.locale === 'es' ? 'Fechas de Reserva' : 'Rental Period'}
+            </h2>
+            <DateTimePicker
+              locale={data.locale}
+              bind:startDate
+              bind:startTime
+              bind:endDate
+              bind:endTime
+            />
+          </div>
+        {/if}
+
         <!-- CTA -->
         <div class="flex flex-col sm:flex-row gap-sm pt-sm">
           {#if data.vehicle.available}
             <a
-              href={emailBookingUrl}
-              class="flex-1 flex items-center justify-center text-center bg-primary text-on-primary rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
+              href={isBookingValid ? emailBookingUrl : undefined}
+              aria-disabled={!isBookingValid}
+              class="flex-1 flex items-center justify-center text-center bg-primary text-on-primary rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold transition-all duration-300 active:scale-95"
+              class:opacity-50={!isBookingValid}
+              class:pointer-events-none={!isBookingValid}
+              class:hover:bg-primary-container={isBookingValid}
+              class:hover:text-on-primary-container={isBookingValid}
             >
               {data.t.vehicleDetail.bookVehicle}
             </a>
             <a
-              href={whatsappBookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex-1 flex items-center justify-center text-center bg-[#25d366] text-white rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-[#1ebe57] transition-all duration-300 active:scale-95"
+              href={isBookingValid ? whatsappBookingUrl : undefined}
+              target={isBookingValid ? "_blank" : undefined}
+              rel={isBookingValid ? "noopener noreferrer" : undefined}
+              aria-disabled={!isBookingValid}
+              class="flex-1 flex items-center justify-center text-center bg-[#25d366] text-white rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold transition-all duration-300 active:scale-95"
+              class:opacity-50={!isBookingValid}
+              class:pointer-events-none={!isBookingValid}
+              class:hover:bg-[#1ebe57]={isBookingValid}
             >
               {data.t.vehicleDetail.bookWhatsApp}
             </a>

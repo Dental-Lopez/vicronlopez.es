@@ -44,7 +44,15 @@
     if (!vehicle) return;
     const t = getDictionary(locale);
     const url = `${$page.url.origin}/${locale}/${t.nav.slugs.vehicles}/${slug}/`;
-    values.message = buildBookingMessage(vehicle, url, t, locale);
+
+    const startDate = $page.url.searchParams.get('startDate') || '';
+    const startTime = $page.url.searchParams.get('startTime') || '';
+    const endDate = $page.url.searchParams.get('endDate') || '';
+    const endTime = $page.url.searchParams.get('endTime') || '';
+
+    const dates = startDate && endDate ? { startDate, startTime, endDate, endTime } : undefined;
+
+    values.message = buildBookingMessage(vehicle, url, t, locale, dates);
   });
   let errors = $state<FieldErrors>({});
   let submitted = $state(false);
