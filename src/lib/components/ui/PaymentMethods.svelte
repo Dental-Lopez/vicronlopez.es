@@ -10,10 +10,10 @@
   let { t, hideTitle = false, class: className }: Props = $props();
 
   const methods = $derived([
-    { id: 'visa', label: t.visa, icon: '/assets/images/visa.svg' },
-    { id: 'mastercard', label: t.mastercard, icon: '/assets/images/mastercard.svg' },
-    { id: 'sepa', label: t.sepa, icon: '/assets/images/sepa.svg' },
-    { id: 'cash', label: t.cash, icon: '/assets/images/cash.svg' }
+    { id: 'visa', label: t.visa, icon: '/assets/images/payments/visa.svg' },
+    { id: 'mastercard', label: t.mastercard, icon: '/assets/images/payments/mastercard.svg' },
+    { id: 'sepa', label: t.sepa, icon: '/assets/images/payments/sepa.svg' },
+    { id: 'cash', label: t.cash, icon: '/assets/images/payments/cash.svg' }
   ] as const);
 </script>
 

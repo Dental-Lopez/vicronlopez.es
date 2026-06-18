@@ -12,10 +12,10 @@
   const t = $derived.by(() => getDictionary(locale));
 
   const paymentMethods = $derived([
-    { id: 'visa', label: t.payments.visa, icon: '/assets/images/visa.svg' },
-    { id: 'mastercard', label: t.payments.mastercard, icon: '/assets/images/mastercard.svg' },
-    { id: 'sepa', label: t.payments.sepa, icon: '/assets/images/sepa.svg' },
-    { id: 'cash', label: t.payments.cash, icon: '/assets/images/cash.svg' }
+    { id: 'visa', label: t.payments.visa, icon: '/assets/images/payments/visa.svg' },
+    { id: 'mastercard', label: t.payments.mastercard, icon: '/assets/images/payments/mastercard.svg' },
+    { id: 'sepa', label: t.payments.sepa, icon: '/assets/images/payments/sepa.svg' },
+    { id: 'cash', label: t.payments.cash, icon: '/assets/images/payments/cash.svg' }
   ]);
 
 </script>

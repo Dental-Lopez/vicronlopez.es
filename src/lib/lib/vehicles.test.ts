@@ -21,7 +21,7 @@ const mockVehicles: Vehicle[] = [
     category: 'electric-sedan',
     pricePerDay: 800,
     specs: { acceleration: '1.99s', drivetrain: 'AWD', seats: 5, fuel: 'Electric' },
-    image: '/vehicles/tesla-model-s-plaid.webp',
+    image: '/assets/images/vehicles/tesla-model-s-plaid.webp',
     featured: true,
     available: true,
   },
@@ -34,7 +34,7 @@ const mockVehicles: Vehicle[] = [
     category: 'truck',
     pricePerDay: 250,
     specs: { acceleration: '5.2s', drivetrain: '4WD', seats: 5, fuel: 'Gasoline' },
-    image: '/vehicles/ford-f150-raptor.webp',
+    image: '/assets/images/vehicles/ford-f150-raptor.webp',
     featured: false,
     available: true,
   },
@@ -47,7 +47,7 @@ const mockVehicles: Vehicle[] = [
     category: 'sedan',
     pricePerDay: 450,
     specs: { acceleration: '3.1s', drivetrain: 'AWD', seats: 5, fuel: 'Gasoline' },
-    image: '/vehicles/bmw-m5-competition.webp',
+    image: '/assets/images/vehicles/bmw-m5-competition.webp',
     featured: true,
     available: true,
   },
@@ -60,7 +60,7 @@ const mockVehicles: Vehicle[] = [
     category: 'sports-coupe',
     pricePerDay: 350,
     specs: { acceleration: '3.9s', drivetrain: 'RWD', seats: 2, fuel: 'Gasoline' },
-    image: '/vehicles/porsche-718-cayman.webp',
+    image: '/assets/images/vehicles/porsche-718-cayman.webp',
     featured: false,
     available: true,
   },
@@ -73,7 +73,7 @@ const mockVehicles: Vehicle[] = [
     category: 'convertible',
     pricePerDay: 150,
     specs: { drivetrain: 'RWD', seats: 4, fuel: 'Gasoline' },
-    image: '/vehicles/fiat-500-1969.webp',
+    image: '/assets/images/vehicles/fiat-500-1969.webp',
     featured: false,
     available: true,
   }
@@ -90,7 +90,7 @@ describe('getAllVehicles', () => {
       expect(v.slug).toBeTruthy();
       expect(v.brand).toBeTruthy();
       expect(v.model).toBeTruthy();
-      expect(v.image).toMatch(/^\/vehicles\/.+\.webp$/);
+      expect(v.image).toMatch(/^\/assets\/images\/vehicles\/.+\.webp$/);
     }
   });
 
@@ -290,7 +290,7 @@ describe('vehicleSchema validation with images', () => {
       expect(v.images).toBeInstanceOf(Array);
       expect(v.images?.length).toBe(4);
       for (const imgPath of v.images || []) {
-        expect(imgPath).toMatch(/^\/vehicles\/.+-\d+\.webp$/);
+        expect(imgPath).toMatch(/^\/assets\/images\/vehicles\/.+-\d+\.webp$/);
       }
     }
   });
