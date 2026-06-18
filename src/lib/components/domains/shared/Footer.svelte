@@ -1,6 +1,7 @@
 <script lang="ts">
   import { getDictionary, getLocalizedPath } from '@/i18n/utils';
   import type { Locale } from '@/i18n/utils';
+  import { business, telHref, mapsUrl } from '@/business';
 
   interface Props {
     locale: Locale;
@@ -22,7 +23,6 @@
     { id: 'cash', label: t.payments.cash, icon: '/assets/images/cash.svg' }
   ]);
 
-  const MAPS_FULL_URL = 'https://www.google.com/maps/place/Ourense,+Province+of+Ourense/@42.3383925,-7.8842851,14z';
 </script>
 
 <footer class="bg-surface-container-lowest border-t border-outline-variant/30 py-xl mt-auto">
@@ -53,13 +53,13 @@
         <ul class="space-y-4 font-body text-body-sm text-on-surface-variant">
           <li class="flex items-center gap-sm">
             <span class="material-symbols-outlined text-primary text-xl">phone</span>
-            <a href="tel:+34698133249" class="hover:text-primary hover:underline transition-colors">
-              +34 698 13 32 49
+            <a href={telHref} class="hover:text-primary hover:underline transition-colors">
+              {business.phone.display}
             </a>
           </li>
           <li class="flex items-center gap-sm">
             <span class="material-symbols-outlined text-primary text-xl">location_on</span>
-            <a href={MAPS_FULL_URL} target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline transition-colors">
+            <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline transition-colors">
               Ourense, Galicia, España
             </a>
           </li>

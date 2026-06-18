@@ -7,7 +7,8 @@
   import PaymentMethods from '@/components/ui/PaymentMethods.svelte';
   import { formatCurrency } from '@/lib/formatters';
   import { jsonLdScript } from '@/lib/jsonLd';
-  import { WHATSAPP_NUMBER } from '@/contact';
+  import { business, absoluteUrl } from '@/business';
+  import { car, breadcrumb, vehicleUrl } from '@/seo/schema';
   import { buildBookingMessage } from '@/booking';
   import type { PageData } from './$types';
 
@@ -16,7 +17,7 @@
   let showDepositInfo = $state(false);
 
   const bookingMessage = $derived(buildBookingMessage(data.vehicle, $page.url.href, data.t, data.locale));
-  const whatsappBookingUrl = $derived(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(bookingMessage)}`);
+  const whatsappBookingUrl = $derived(`https://wa.me/${business.whatsapp}?text=${encodeURIComponent(bookingMessage)}`);
   const emailBookingUrl = $derived(`/${data.locale}${data.t.nav.links.contact}?vehicle=${data.vehicle.slug}`);
 
   const specsEntries = $derived(
@@ -30,28 +31,15 @@
   );
   const carSchemaScript = $derived(
     jsonLdScript({
-      "@context": "https://schema.org",
-      "@type": "Car",
-      "name": `${data.vehicle.brand} ${data.vehicle.model}`,
-      "image": `https://www.vicronlopez.es${data.vehicle.image}`,
-      "description": `${data.t.vehicleDetail.forRent}: ${data.vehicle.brand} ${data.vehicle.model} (${data.vehicle.year})`,
-      "model": data.vehicle.model,
-      "brand": {
-        "@type": "Brand",
-        "name": data.vehicle.brand
-      },
-      "modelDate": data.vehicle.year,
-      "offers": {
-        "@type": "Offer",
-        "price": data.vehicle.pricePerDay,
-        "priceCurrency": data.locale === 'es' ? 'ARS' : 'USD',
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": data.vehicle.pricePerDay,
-          "priceCurrency": data.locale === 'es' ? 'ARS' : 'USD',
-          "unitText": "day"
-        },
-      }
+      '@context': 'https://schema.org',
+      '@graph': [
+        car(data.vehicle, data.locale, data.t),
+        breadcrumb([
+          { name: data.t.nav.overview, url: absoluteUrl(`/${data.locale}/`) },
+          { name: data.t.nav.inventory, url: absoluteUrl(`/${data.locale}/${data.t.nav.slugs.vehicles}/`) },
+          { name: `${data.vehicle.brand} ${data.vehicle.model}`, url: vehicleUrl(data.vehicle, data.locale, data.t) },
+        ]),
+      ],
     })
   );
 </script>
@@ -66,7 +54,7 @@
 
 <svelte:head>
   <title>{data.vehicle.brand} {data.vehicle.model} {data.vehicle.year} | {data.t.site.name}</title>
-  <meta name="description" content="{data.t.vehicleDetail.forRent}: {data.vehicle.brand} {data.vehicle.model} — {data.t.vehicleDetail.specifications}" />
+  <meta name="description" content="{data.t.vehicleDetail.forRent}: {data.vehicle.brand} {data.vehicle.model} | {data.t.vehicleDetail.specifications}" />
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html carSchemaScript}
 </svelte:head>

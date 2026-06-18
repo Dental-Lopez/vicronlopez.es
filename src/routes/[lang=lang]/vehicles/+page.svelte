@@ -4,25 +4,22 @@
   import Footer from '@/components/domains/shared/Footer.svelte';
   import VehicleHubIsland from '@/components/ui/VehicleHubIsland.svelte';
   import { jsonLdScript } from '@/lib/jsonLd';
+  import { absoluteUrl } from '@/business';
+  import { collectionPage, breadcrumb } from '@/seo/schema';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
 
   const collectionSchemaScript = $derived(
     jsonLdScript({
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": `${data.t.vehicles.allVehicles} | ${data.t.site.name}`,
-      "description": data.t.vehicles.allVehiclesSubline,
-      "url": `https://www.vicronlopez.es/${data.locale}/${data.t.nav.slugs.vehicles}/`,
-      "mainEntity": {
-        "@type": "ItemList",
-        "itemListElement": data.vehicles.map((v: { slug: string }, index: number) => ({
-          "@type": "ListItem",
-          "position": index + 1,
-          "url": `https://www.vicronlopez.es/${data.locale}/${data.t.nav.slugs.vehicles}/${v.slug}/`
-        }))
-      }
+      '@context': 'https://schema.org',
+      '@graph': [
+        collectionPage(data.locale, data.t, data.vehicles),
+        breadcrumb([
+          { name: data.t.nav.overview, url: absoluteUrl(`/${data.locale}/`) },
+          { name: data.t.nav.inventory, url: absoluteUrl(`/${data.locale}/${data.t.nav.slugs.vehicles}/`) },
+        ]),
+      ],
     })
   );
 </script>

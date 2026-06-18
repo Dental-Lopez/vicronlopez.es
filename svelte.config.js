@@ -19,7 +19,8 @@ const config = {
     inlineStyleThreshold: 70000,
     prerender: {
       handleHttpError: 'fail',
-      origin: 'https://vicronlopez.es'
+      // Must match `business.url` in src/lib/business.ts (canonical host, with www).
+      origin: 'https://www.vicronlopez.es'
     }
   },
 };

@@ -21,7 +21,7 @@
       body: t.features.flexibleBody,
     },
     {
-      icon: 'language',
+      icon: 'location_on',
       title: t.features.networkTitle,
       body: t.features.networkBody,
     },

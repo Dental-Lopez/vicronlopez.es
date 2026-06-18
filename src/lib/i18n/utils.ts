@@ -25,7 +25,7 @@ export function getLocalizedPath(url: URL, targetLocale: Locale): string {
   const tTarget = getDictionary(targetLocale);
 
   // Preserve the query string when switching language (so a prefilled contact
-  // form survives the switch). Read it only in the browser — accessing
+  // form survives the switch). Read it only in the browser - accessing
   // `url.search` during prerender throws, and prerendered pages have no query.
   const search = browser ? url.search : '';
 

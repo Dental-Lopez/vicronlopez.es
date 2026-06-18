@@ -3,6 +3,8 @@
   import TopNavBar from '@/components/domains/nav/TopNavBar.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
   import { jsonLdScript } from '@/lib/jsonLd';
+  import { absoluteUrl } from '@/business';
+  import { webPage, breadcrumb } from '@/seo/schema';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
@@ -36,22 +38,21 @@
 
   const aboutSchemaScript = $derived(
     jsonLdScript({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "AboutPage",
-          "@id": `https://www.vicronlopez.es${$page.url.pathname}#aboutpage`,
-          "url": `https://www.vicronlopez.es${$page.url.pathname}`,
-          "name": `${data.t.about.title} | ${data.t.site.name}`,
-          "description": data.t.about.subtitle
-        },
-        {
-          "@type": "AutoRental",
-          "@id": `https://www.vicronlopez.es/${data.locale}/#autorental`,
-          "name": data.t.site.name,
-          "url": `https://www.vicronlopez.es/${data.locale}/`,
-        }
-      ]
+      '@context': 'https://schema.org',
+      '@graph': [
+        webPage({
+          locale: data.locale,
+          t: data.t,
+          type: 'AboutPage',
+          url: absoluteUrl($page.url.pathname),
+          name: `${data.t.about.title} | ${data.t.site.name}`,
+          description: data.t.about.subtitle,
+        }),
+        breadcrumb([
+          { name: data.t.nav.overview, url: absoluteUrl(`/${data.locale}/`) },
+          { name: data.t.about.title, url: absoluteUrl($page.url.pathname) },
+        ]),
+      ],
     })
   );
 </script>

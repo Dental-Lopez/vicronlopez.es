@@ -3,7 +3,7 @@ import type { Dictionary } from './en';
 export const es: Dictionary = {
   site: {
     name: 'Vicron Lopez',
-    description: 'Encontrá tu vehículo ideal — alquilá con confianza.',
+    description: 'Encontrá tu vehículo ideal y alquilá con confianza.',
   },
   nav: {
     home: 'Inicio',
@@ -17,8 +17,7 @@ export const es: Dictionary = {
     reviews: 'Reseñas',
     services: 'Servicios',
     signIn: 'Ingresar',
-    phone: '+34 698 13 32 49',
-    callAria: 'Llamanos al +34 698 13 32 49',
+    callAria: 'Llamanos al',
     // Nueva estructura de navegación unificada
     links: {
       inventory: '/vehiculos/',
@@ -119,9 +118,9 @@ export const es: Dictionary = {
     flexibleTitle: 'Alquiler Flexible',
     flexibleBody:
       'Elegí entre emociones a corto plazo o planes a largo plazo. Nuestras opciones de alquiler personalizadas se adaptan a tus demandas de estilo de vida.',
-    networkTitle: 'Red Global',
+    networkTitle: 'Presencia Local',
     networkBody:
-      'Accedé a nuestra colección exclusiva en los principales centros internacionales. Movilidad sin límites, donde sea que te lleve tu viaje.',
+      'Ofrecemos nuestra flota exclusiva directamente en Ourense. Nos enfocamos en darte la mejor experiencia local con atención personalizada.',
     sectionTitle: 'Por qué Vicron Lopez',
   },
   footer: {
@@ -132,8 +131,6 @@ export const es: Dictionary = {
     contact: 'Contacto',
     company: 'Compañía',
     sitemap: 'Mapa del sitio',
-    phone: '+34 698 13 32 49',
-    email: 'info@vicronlopez.es',
     aboutTitle: 'Acerca de Vicron Lopez',
     aboutText: 'Nuestro alquiler de coches deportivos y de lujo tiene una oficina en el corazón de Ourense. Gracias a ello, estamos exactamente donde usted está - sin salir de Ourense durante su viaje. Todo el proceso de Alquiler de Coches de Lujo se hace lo más sencillo y rápido posible para que pueda centrarse y disfrutar de su estancia.',
     findUsTitle: 'Encuéntranos allí',
@@ -171,7 +168,6 @@ export const es: Dictionary = {
     viewOnMaps: 'Ver en Maps',
     hoursLabel: 'Lun–Sáb, 9:00–19:00',
     mapTitle: 'Ubicación de Vicron Lopez en Ourense',
-    emailLabel: 'info@vicronlopez.es',
   },
   vehicleDetail: {
     backToInventory: 'Volver al Inventario',
@@ -247,14 +243,14 @@ export const es: Dictionary = {
     subtitle: 'Nuestra historia, nuestra misión, nuestra pasión por la movilidad.',
     missionTitle: 'Nuestra Misión',
     missionBody:
-      'Redefinir la movilidad automotriz conectando a las personas con vehículos excepcionales para alquilar — desde una escapada de fin de semana hasta un viaje a largo plazo.',
+      'Redefinir la movilidad automotriz conectando a las personas con vehículos excepcionales para alquilar, desde una escapada de fin de semana hasta un viaje a largo plazo.',
     valuesTitle: 'Nuestros Valores',
     value1Title: 'Excelencia',
     value1Body:
       'Cada vehículo de nuestra flota es inspeccionado y mantenido rigurosamente bajo los más altos estándares.',
     value2Title: 'Transparencia',
     value2Body:
-      'Precios claros, asesoramiento honesto y procesos directos — sin cargos ocultos.',
+      'Precios claros, asesoramiento honesto y procesos directos, sin cargos ocultos.',
     value3Title: 'El Cliente Primero',
     value3Body:
       'Tu satisfacción impulsa todo lo que hacemos. Estamos aquí antes, durante y después de cada alquiler.',
@@ -272,10 +268,10 @@ export const es: Dictionary = {
     commitmentCta: 'Contactanos',
     timelineTitle: 'La Trayectoria',
     timeline: [
-      { year: '2015', title: 'Los Comienzos', body: 'Fundada con la visión de unir la precisión del software con la ingeniería automotriz.' },
-      { year: '2018', title: 'Primer Prototipo', body: 'Se presenta el concepto V1 Alpha, demostrando capacidades autónomas.' },
-      { year: '2021', title: 'Expansión Global', body: 'Las operaciones se expanden a Europa y Asia, estableciendo un lenguaje de diseño global.' },
-      { year: '2024', title: 'La Era Aura', body: 'Lanzamiento de nuestra plataforma de movilidad insignia, redefiniendo el transporte de lujo.' },
+      { year: '2015', title: 'Fundación', body: 'Fundada en Ourense con la visión de ofrecer un servicio premium y una flota selecta de alta gama.' },
+      { year: '2018', title: 'Crecimiento de la Flota', body: 'Ampliamos nuestra colección introduciendo deportivos exclusivos y vehículos de lujo.' },
+      { year: '2021', title: 'Líderes en Ourense', body: 'Nos consolidamos como el servicio de alquiler de coches de lujo de referencia en Ourense y Galicia.' },
+      { year: '2024', title: 'Experiencia Digital', body: 'Lanzamiento de nuestra plataforma web para reservas rápidas y atención 100% personalizada.' },
     ],
     teamTitle: 'Liderazgo',
     roles: [
@@ -430,7 +426,7 @@ export const es: Dictionary = {
   },
   landingContact: {
     title: '¿Listo para Empezar?',
-    subtitle: 'Ya sea que quieras alquilar o simplemente tengas una pregunta — estamos para vos.',
+    subtitle: 'Ya sea que quieras alquilar o simplemente tengas una pregunta, estamos para vos.',
     cta: 'Contactanos',
     ctaPhone: 'Llamanos',
   },

@@ -15,7 +15,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     const redirect = (to: string) =>
       new Response(null, { status: 301, headers: { Location: to } });
 
-    // Block direct access to technical paths — redirect to localized
+    // Block direct access to technical paths - redirect to localized
     if (pathname === '/es/vehicles' || pathname === '/es/vehicles/')
       return redirect('/es/vehiculos/');
     if (pathname === '/es/vehicles/for-rent' || pathname === '/es/vehicles/for-rent/')

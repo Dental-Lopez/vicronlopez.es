@@ -1,7 +1,9 @@
+import { business } from '@/business';
+
 export function formatCurrency(amount: number, locale: string = 'en'): string {
-  return new Intl.NumberFormat(locale === 'es' ? 'es-AR' : 'en-US', {
+  return new Intl.NumberFormat(locale === 'es' ? 'es-ES' : 'en-US', {
     style: 'currency',
-    currency: locale === 'es' ? 'ARS' : 'USD',
+    currency: business.currency,
     maximumFractionDigits: 0,
   }).format(amount);
 }

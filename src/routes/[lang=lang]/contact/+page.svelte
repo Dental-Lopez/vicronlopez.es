@@ -4,40 +4,29 @@
   import Footer from '@/components/domains/shared/Footer.svelte';
   import ContactForm from '@/components/ui/ContactForm.svelte';
   import { jsonLdScript } from '@/lib/jsonLd';
+  import { business, absoluteUrl, telHref, mailtoHref, mapsEmbedUrl, mapsUrl } from '@/business';
+  import { webPage, breadcrumb } from '@/seo/schema';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
 
-  const MAPS_EMBED_URL = 'https://maps.google.com/maps?q=Ourense,+Galicia,+Spain&t=&z=14&ie=UTF8&iwloc=&output=embed';
-  const MAPS_FULL_URL = 'https://www.google.com/maps/place/Ourense,+Province+of+Ourense/@42.3383925,-7.8842851,14z';
-
   const contactSchemaScript = $derived(
     jsonLdScript({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "ContactPage",
-          "@id": `https://www.vicronlopez.es${$page.url.pathname}#contactpage`,
-          "url": `https://www.vicronlopez.es${$page.url.pathname}`,
-          "name": `${data.t.contact.title} | ${data.t.site.name}`,
-          "description": data.t.contact.subtitle
-        },
-        {
-          "@type": "AutoRental",
-          "@id": `https://www.vicronlopez.es/${data.locale}/#autorental`,
-          "name": data.t.site.name,
-          "url": `https://www.vicronlopez.es/${data.locale}/`,
-          "image": "https://www.vicronlopez.es/icons/icon-512.png",
-          "telephone": "+34 698 13 32 49",
-          "email": "info@vicronlopez.es",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Ourense",
-            "addressRegion": "Galicia",
-            "addressCountry": "ES"
-          }
-        }
-      ]
+      '@context': 'https://schema.org',
+      '@graph': [
+        webPage({
+          locale: data.locale,
+          t: data.t,
+          type: 'ContactPage',
+          url: absoluteUrl($page.url.pathname),
+          name: `${data.t.contact.title} | ${data.t.site.name}`,
+          description: data.t.contact.subtitle,
+        }),
+        breadcrumb([
+          { name: data.t.nav.overview, url: absoluteUrl(`/${data.locale}/`) },
+          { name: data.t.contact.title, url: absoluteUrl($page.url.pathname) },
+        ]),
+      ],
     })
   );
 </script>
@@ -76,20 +65,20 @@
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-xl">
       <div class="lg:col-span-3 space-y-lg">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
-          <a href={MAPS_FULL_URL} target="_blank" rel="noopener noreferrer"
+          <a href={mapsUrl} target="_blank" rel="noopener noreferrer"
             class="group flex items-center gap-sm p-md bg-surface-container rounded-xl border border-outline-variant/20 hover:border-primary/30 hover:bg-surface-container-high transition-all">
             <span class="material-symbols-outlined text-xl text-primary">location_on</span>
             <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Ourense, Galicia, España</span>
           </a>
-          <a href="tel:+34698133249"
+          <a href={telHref}
             class="group flex items-center gap-sm p-md bg-surface-container rounded-xl border border-outline-variant/20 hover:border-primary/30 hover:bg-surface-container-high transition-all">
             <span class="material-symbols-outlined text-xl text-primary">phone</span>
-            <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">+34 698 13 32 49</span>
+            <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">{business.phone.display}</span>
           </a>
-          <a href="mailto:{data.t.contact.emailLabel}"
+          <a href={mailtoHref}
             class="group flex items-center gap-sm p-md bg-surface-container rounded-xl border border-outline-variant/20 hover:border-primary/30 hover:bg-surface-container-high transition-all">
             <span class="material-symbols-outlined text-xl text-primary">mail</span>
-            <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">{data.t.contact.emailLabel}</span>
+            <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">{business.email}</span>
           </a>
           <div class="flex items-center gap-sm p-md bg-surface-container rounded-xl border border-outline-variant/20">
             <span class="material-symbols-outlined text-xl text-primary">schedule</span>
@@ -128,21 +117,21 @@
               <span class="material-symbols-outlined text-primary">location_on</span>
               <span class="text-body-md font-semibold text-on-surface">Ourense, Galicia</span>
             </div>
-            <a href={MAPS_FULL_URL} target="_blank" rel="noopener noreferrer"
+            <a href={mapsUrl} target="_blank" rel="noopener noreferrer"
               class="flex items-center gap-xs text-primary text-body-sm font-semibold hover:underline">
               <span class="material-symbols-outlined text-base">open_in_new</span>
               {data.t.contact.viewOnMaps}
             </a>
           </div>
           <iframe
-            src={MAPS_EMBED_URL}
+            src={mapsEmbedUrl}
             width="100%"
             class="w-full h-[400px] lg:h-[520px] border-0"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title={data.t.contact.mapTitle}
           ></iframe>
-          <a href={MAPS_FULL_URL} target="_blank" rel="noopener noreferrer"
+          <a href={mapsUrl} target="_blank" rel="noopener noreferrer"
             class="block text-center py-md bg-primary text-on-primary font-semibold text-label-caps uppercase tracking-wider hover:bg-primary-container hover:text-on-primary-container transition-all">
             📍 {data.t.contact.directionsCta}
           </a>

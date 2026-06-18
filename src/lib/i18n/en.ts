@@ -1,7 +1,7 @@
 export const en = {
   site: {
     name: 'Vicron Lopez',
-    description: 'Find your perfect vehicle — rent with confidence.',
+    description: 'Find your perfect vehicle and rent with confidence.',
   },
   nav: {
     home: 'Home',
@@ -15,8 +15,7 @@ export const en = {
     reviews: 'Reviews',
     services: 'Services',
     signIn: 'Sign In',
-    phone: '+34 698 13 32 49',
-    callAria: 'Call us at +34 698 13 32 49',
+    callAria: 'Call us at',
     // New unified navigation structure
     links: {
       inventory: '/vehicles/',
@@ -117,9 +116,9 @@ export const en = {
     flexibleTitle: 'Flexible Rentals',
     flexibleBody:
       'Choose between short-term thrills or long-term plans. Our tailored rental options adapt to your specific lifestyle demands.',
-    networkTitle: 'Global Network',
+    networkTitle: 'Local Presence',
     networkBody:
-      'Access our exclusive collection across major international hubs. Seamless mobility, wherever your journey takes you.',
+      'Access our exclusive collection directly in Ourense. We focus on providing the best local experience and personalized attention.',
     sectionTitle: 'Why Vicron Lopez',
   },
   footer: {
@@ -130,8 +129,6 @@ export const en = {
     contact: 'Contact',
     company: 'Company',
     sitemap: 'Sitemap',
-    phone: '+34 698 13 32 49',
-    email: 'info@vicronlopez.es',
     aboutTitle: 'About Vicron Lopez',
     aboutText: 'Our sports and luxury car rental service has an office in the heart of Ourense. Thanks to this, we are exactly where you are - without leaving Ourense during your trip. The entire process of Luxury Car Rental is made as simple and fast as possible so you can focus and enjoy your stay.',
     findUsTitle: 'Find us there',
@@ -169,7 +166,6 @@ export const en = {
     viewOnMaps: 'View on Maps',
     hoursLabel: 'Mon–Sat, 9:00–19:00',
     mapTitle: 'Vicron Lopez location in Ourense',
-    emailLabel: 'info@vicronlopez.es',
   },
   vehicleDetail: {
     backToInventory: 'Back to Inventory',
@@ -245,14 +241,14 @@ export const en = {
     subtitle: 'Our story, our mission, our passion for mobility.',
     missionTitle: 'Our Mission',
     missionBody:
-      'To redefine automotive mobility by connecting people with exceptional vehicles to rent for any experience — from a weekend escape to a long-term journey.',
+      'To redefine automotive mobility by connecting people with exceptional vehicles to rent for any experience, from a weekend escape to a long-term journey.',
     valuesTitle: 'Our Values',
     value1Title: 'Excellence',
     value1Body:
       'Every vehicle in our fleet is rigorously inspected and maintained to the highest standards.',
     value2Title: 'Transparency',
     value2Body:
-      'Clear pricing, honest advice, and straightforward processes — no hidden fees.',
+      'Clear pricing, honest advice, and straightforward processes, with no hidden fees.',
     value3Title: 'Customer First',
     value3Body:
       'Your satisfaction drives everything we do. We are here before, during, and after every rental.',
@@ -270,10 +266,10 @@ export const en = {
     commitmentCta: 'Get in Touch',
     timelineTitle: 'The Journey',
     timeline: [
-      { year: '2015', title: 'Inception', body: 'Founded with a vision to merge software precision with automotive engineering.' },
-      { year: '2018', title: 'First Prototype', body: 'The V1 Alpha concept is unveiled, demonstrating autonomous capabilities.' },
-      { year: '2021', title: 'Global Expansion', body: 'Operations expand to Europe and Asia, establishing a global design language.' },
-      { year: '2024', title: 'The Aura Era', body: 'Launch of our flagship mobility platform, redefining luxury transport.' },
+      { year: '2015', title: 'Inception', body: 'Founded in Ourense with a vision to provide premium service and a select high-end fleet.' },
+      { year: '2018', title: 'Fleet Growth', body: 'We expanded our collection by introducing exclusive sports cars and luxury vehicles.' },
+      { year: '2021', title: 'Leaders in Ourense', body: 'We established ourselves as the benchmark luxury car rental service in Ourense and Galicia.' },
+      { year: '2024', title: 'Digital Experience', body: 'Launched our web platform for fast bookings and 100% personalized support.' },
     ],
     teamTitle: 'Leadership',
     roles: [
@@ -409,7 +405,7 @@ export const en = {
     deliveryTitle: 'Vehicle Delivery',
     deliveryBody: 'Doorstep delivery and collection of your rental, wherever and whenever suits you best.',
     maintenanceTitle: 'Maintenance & Service',
-    maintenanceBody: 'In-house team for scheduled servicing, inspections, and repairs — all under one roof.',
+    maintenanceBody: 'In-house team for scheduled servicing, inspections, and repairs, all under one roof.',
     insuranceTitle: 'Insurance & Coverage',
     insuranceBody: 'Comprehensive plans from basic cover to full protection, tailored to every budget.',
   },
@@ -428,7 +424,7 @@ export const en = {
   },
   landingContact: {
     title: 'Ready to Get Started?',
-    subtitle: 'Whether you want to rent or just have a question — we are here for you.',
+    subtitle: 'Whether you want to rent or just have a question, we are here for you.',
     cta: 'Contact Us',
     ctaPhone: 'Call Us',
   },

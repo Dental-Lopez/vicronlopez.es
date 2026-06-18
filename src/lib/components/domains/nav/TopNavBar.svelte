@@ -1,6 +1,7 @@
 <script lang="ts">
   import { getDictionary, getLocalizedPath } from '@/i18n/utils';
   import type { Locale } from '@/i18n/utils';
+  import { business, telHref, mailtoHref } from '@/business';
   import ThemeToggle from '@/components/ui/ThemeToggle.svelte';
 
   interface Props {
@@ -46,7 +47,7 @@
       <a
         href={`/${locale}/`}
         class="text-xl md:text-2xl font-black tracking-tighter font-display text-primary shrink-0"
-        aria-label="Vicron Lopez — Home"
+        aria-label="Vicron Lopez - Home"
       >
         Vicron Lopez
       </a>
@@ -92,12 +93,12 @@
 
         <!-- Phone -->
         <a
-          href="tel:+34698133249"
+          href={telHref}
           class="inline-flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:rounded-full bg-primary text-on-primary md:px-lg md:py-2.5 rounded-full hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-90"
-          aria-label={t.nav.callAria}
+          aria-label={`${t.nav.callAria} ${business.phone.display}`}
         >
           <span class="material-symbols-outlined md:hidden text-[24px]">call</span>
-          <span class="hidden md:inline text-label-caps uppercase tracking-[0.05em] font-semibold font-body">{t.nav.phone}</span>
+          <span class="hidden md:inline text-label-caps uppercase tracking-[0.05em] font-semibold font-body">{business.phone.display}</span>
         </a>
 
         <!-- Burger Button -->
@@ -164,8 +165,8 @@
         style="transition-delay: {isOpen ? 300 : 0}ms"
       >
         <p class="text-label-caps text-on-surface-variant/60 mb-4">{t.contact.title}</p>
-        <a href="mailto:info@vicronlopez.es" class="text-xl font-body text-on-surface hover:text-primary transition-colors">
-          info@vicronlopez.es
+        <a href={mailtoHref} class="text-xl font-body text-on-surface hover:text-primary transition-colors">
+          {business.email}
         </a>
       </div>
     </div>

@@ -2,9 +2,31 @@
   import { page } from '$app/stores';
   import TopNavBar from '@/components/domains/nav/TopNavBar.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
+  import { jsonLdScript } from '@/lib/jsonLd';
+  import { absoluteUrl } from '@/business';
+  import { webPage, breadcrumb } from '@/seo/schema';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
+
+  const schemaScript = $derived(
+    jsonLdScript({
+      '@context': 'https://schema.org',
+      '@graph': [
+        webPage({
+          locale: data.locale,
+          t: data.t,
+          url: absoluteUrl($page.url.pathname),
+          name: `${data.t.sitemap.title} | ${data.t.site.name}`,
+          description: data.t.sitemap.subtitle,
+        }),
+        breadcrumb([
+          { name: data.t.nav.overview, url: absoluteUrl(`/${data.locale}/`) },
+          { name: data.t.sitemap.title, url: absoluteUrl($page.url.pathname) },
+        ]),
+      ],
+    })
+  );
 
   const sitemapData = $derived([
     {
@@ -34,6 +56,9 @@
 
 <svelte:head>
   <title>{data.t.sitemap.title} | {data.t.site.name}</title>
+  <meta name="description" content={data.t.sitemap.subtitle} />
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html schemaScript}
 </svelte:head>
 
 <TopNavBar

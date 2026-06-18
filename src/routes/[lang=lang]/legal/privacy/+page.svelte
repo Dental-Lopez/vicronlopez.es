@@ -2,14 +2,39 @@
   import { page } from '$app/stores';
   import TopNavBar from '@/components/domains/nav/TopNavBar.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
+  import { jsonLdScript } from '@/lib/jsonLd';
+  import { business, absoluteUrl } from '@/business';
+  import { webPage, breadcrumb } from '@/seo/schema';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
+
+  const schemaScript = $derived(
+    jsonLdScript({
+      '@context': 'https://schema.org',
+      '@graph': [
+        webPage({
+          locale: data.locale,
+          t: data.t,
+          url: absoluteUrl($page.url.pathname),
+          name: `${data.t.legal.privacyTitle} | ${data.t.site.name}`,
+          description: `${data.t.legal.privacyTitle} | ${data.t.site.name}`,
+          dateModified: business.legalUpdated,
+        }),
+        breadcrumb([
+          { name: data.t.nav.overview, url: absoluteUrl(`/${data.locale}/`) },
+          { name: data.t.legal.privacyTitle, url: absoluteUrl($page.url.pathname) },
+        ]),
+      ],
+    })
+  );
 </script>
 
 <svelte:head>
   <title>{data.t.legal.privacyTitle} | {data.t.site.name}</title>
   <meta name="description" content={data.t.legal.privacyLastUpdated} />
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html schemaScript}
 </svelte:head>
 
 <TopNavBar

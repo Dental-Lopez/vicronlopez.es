@@ -10,48 +10,14 @@
   import ContactSection from '@/components/domains/landing/ContactSection.svelte';
   import Footer from '@/components/domains/shared/Footer.svelte';
   import PaymentMethods from '@/components/ui/PaymentMethods.svelte';
-  import { jsonLdScript } from '@/lib/jsonLd';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
-
-  const websiteSchemaScript = $derived(
-    jsonLdScript({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": `https://www.vicronlopez.es/${data.locale}/#website`,
-          "url": `https://www.vicronlopez.es/${data.locale}/`,
-          "name": data.t.site.name,
-          "description": data.t.site.description
-        },
-        {
-          "@type": "AutoRental",
-          "@id": `https://www.vicronlopez.es/${data.locale}/#autorental`,
-          "name": data.t.site.name,
-          "url": `https://www.vicronlopez.es/${data.locale}/`,
-          "image": "https://www.vicronlopez.es/icons/icon-512.png",
-          "telephone": "+34 698 13 32 49",
-          "email": "info@vicronlopez.es",
-          "priceRange": "$$",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Ourense",
-            "addressRegion": "Galicia",
-            "addressCountry": "ES"
-          }
-        }
-      ]
-    })
-  );
 </script>
 
 <svelte:head>
   <title>{data.t.site.name}</title>
-  <link rel="canonical" href="https://www.vicronlopez.es/{data.locale}/" />
-  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-  {@html websiteSchemaScript}
+  <!-- Organization + WebSite schema and canonical are emitted site-wide by the layout. -->
 </svelte:head>
 
 <TopNavBar
