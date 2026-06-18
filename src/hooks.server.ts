@@ -18,10 +18,6 @@ export const handle: Handle = async ({ event, resolve }) => {
     // Block direct access to technical paths - redirect to localized
     if (pathname === '/es/vehicles' || pathname === '/es/vehicles/')
       return redirect('/es/vehiculos/');
-    if (pathname === '/es/vehicles/for-rent' || pathname === '/es/vehicles/for-rent/')
-      return redirect('/es/vehiculos/en-alquiler/');
-    if (pathname === '/es/vehicles/for-sell' || pathname === '/es/vehicles/for-sell/')
-      return redirect('/es/vehiculos/en-venta/');
     if (pathname === '/es/contact' || pathname === '/es/contact/')
       return redirect('/es/contacto/');
     if (pathname === '/es/about' || pathname === '/es/about/')

@@ -23,10 +23,6 @@ const expectedPaths = [
   '/es/mapa-del-sitio/',
   '/en/vehicles/',
   '/es/vehiculos/',
-  '/en/vehicles/for-rent/',
-  '/es/vehiculos/en-alquiler/',
-  '/en/vehicles/for-sell/',
-  '/es/vehiculos/en-venta/',
   ...slugs.map(s => `/en/vehicles/${s}/`),
   ...slugs.map(s => `/es/vehiculos/${s}/`),
 ];
@@ -98,5 +94,41 @@ test.describe('Sitemap Integrity', () => {
     }
 
     expect(technicalEsPaths).toHaveLength(0);
+  });
+
+  test('sitemap page should display all active vehicles', async ({ page }) => {
+    // Navigate to Spanish sitemap page
+    await page.goto('/es/mapa-del-sitio/');
+    await expect(page.locator('h1')).toHaveText('Mapa del Sitio');
+    
+    // Check for the three vehicles in Spanish
+    const porscheLinkEs = page.locator('a[href="/es/vehiculos/porsche-992-gt3/"]');
+    await expect(porscheLinkEs).toBeVisible();
+    await expect(porscheLinkEs).toHaveText(/Porsche 992 GT3/);
+
+    const fiatLinkEs = page.locator('a[href="/es/vehiculos/fiat-500-1969/"]');
+    await expect(fiatLinkEs).toBeVisible();
+    await expect(fiatLinkEs).toHaveText(/Fiat 500/);
+
+    const mercedesLinkEs = page.locator('a[href="/es/vehiculos/mercedes-amg-gts/"]');
+    await expect(mercedesLinkEs).toBeVisible();
+    await expect(mercedesLinkEs).toHaveText(/Mercedes.*AMG GTS/);
+
+    // Navigate to English sitemap page
+    await page.goto('/en/sitemap/');
+    await expect(page.locator('h1')).toHaveText('Sitemap');
+
+    // Check for the three vehicles in English
+    const porscheLinkEn = page.locator('a[href="/en/vehicles/porsche-992-gt3/"]');
+    await expect(porscheLinkEn).toBeVisible();
+    await expect(porscheLinkEn).toHaveText(/Porsche 992 GT3/);
+
+    const fiatLinkEn = page.locator('a[href="/en/vehicles/fiat-500-1969/"]');
+    await expect(fiatLinkEn).toBeVisible();
+    await expect(fiatLinkEn).toHaveText(/Fiat 500/);
+
+    const mercedesLinkEn = page.locator('a[href="/en/vehicles/mercedes-amg-gts/"]');
+    await expect(mercedesLinkEn).toBeVisible();
+    await expect(mercedesLinkEn).toHaveText(/Mercedes.*AMG GTS/);
   });
 });

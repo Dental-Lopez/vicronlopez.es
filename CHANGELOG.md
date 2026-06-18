@@ -9,10 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added active vehicle details links dynamically to the sitemap page component (`src/routes/[lang=lang]/sitemap/+page.svelte`) with visual nesting for premium navigation hierarchy.
 - Added a responsive, horizontal image carousel (`VehicleCarousel`) with scroll snap, active pagination indicators, and glassmorphic navigation controls on the single vehicle details page.
 - Added 4 high-quality image variants (WEBP/AVIF formats) from different camera angles (front, profile, rear, three-quarter) for all active vehicles (Porsche 992 GT3, Fiat 500, Mercedes-AMG GTS) maintaining a consistent dark studio lighting and backdrop.
 - Added support and validation for multiple images per vehicle: updated `vehicleSchema` (Zod validation), database metadata in `vehicles.json`, and static asset map in `vehicleImages.ts` (`getVehicleImages`).
 - Added a premium, localized Welcome section below the Hero section on the homepage highlighting luxury car rental in Ourense, with full bilingual support in English and Spanish.
+
+### Changed
+
+- Centered supported payment methods on the homepage by introducing a `center` prop to `PaymentMethods` component and passing it as `true` in `src/routes/[lang=lang]/+page.svelte`.
+
+### Fixed
+
+- Fixed sitemap alternate links in `sitemap.xml` endpoint by processing trailing slashes first to resolve incorrect prefix matching (e.g. `/es/contact/` becoming `/es/contacto/o/`).
+- Fixed and modernized E2E test suites: updated homepage title check, search query keyword in dropdown tests, and welcome section overlay checking.
+
+### Removed
+
+- Removed obsolete redirects for deleted `for-rent` and `for-sell` routes in `src/hooks.server.ts` and their corresponding tests in `src/hooks.server.test.ts`.
 
 - Added 2015 Mercedes-AMG GTS to the vehicle inventory list with complete specifications, pricing, deposit, custom detailed descriptions in English and Spanish, and a high-quality WebP asset.
 - Added classic Fiat 500 (1969) to the vehicle inventory list with complete specifications, pricing, deposit, custom detailed description, and a high-quality WebP asset.

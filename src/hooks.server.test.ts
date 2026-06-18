@@ -34,20 +34,6 @@ describe('handle (i18n Redirect Middleware)', () => {
     expect(result.headers.get('Location')).toBe('/es/vehiculos/');
   });
 
-  it('redirects technical /es/vehicles/for-rent/ to localized /es/vehiculos/en-alquiler/ with 301', async () => {
-    const { result, resolve } = await callHandle('/es/vehicles/for-rent/');
-    expect(resolve).not.toHaveBeenCalled();
-    expect(result.status).toBe(301);
-    expect(result.headers.get('Location')).toBe('/es/vehiculos/en-alquiler/');
-  });
-
-  it('redirects technical /es/vehicles/for-sell/ to localized /es/vehiculos/en-venta/ with 301', async () => {
-    const { result, resolve } = await callHandle('/es/vehicles/for-sell/');
-    expect(resolve).not.toHaveBeenCalled();
-    expect(result.status).toBe(301);
-    expect(result.headers.get('Location')).toBe('/es/vehiculos/en-venta/');
-  });
-
   it('redirects technical /es/about/ to localized /es/sobre-nosotros/ with 301', async () => {
     const { result, resolve } = await callHandle('/es/about/');
     expect(resolve).not.toHaveBeenCalled();

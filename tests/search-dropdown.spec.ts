@@ -7,24 +7,25 @@ test.describe('Search Dropdown Layout', () => {
     // Ensure the page is loaded and interactive
     const searchInput = page.getByPlaceholder('Buscá marca, modelo o tipo…');
     await expect(searchInput).toBeVisible();
+    await page.waitForTimeout(1500); // Wait for entrance animations to settle
     await searchInput.click(); // Focus it
-    await searchInput.fill('Tesla');
+    await searchInput.fill('o');
 
     // Dropdown should appear
-    const dropdown = page.locator('ul:has-text("Tesla")').first();
+    const dropdown = page.locator('ul:has-text("Porsche")').first();
     await expect(dropdown).toBeVisible();
 
-    // Check overlap with overview section
-    const overviewSection = page.locator('#overview');
-    await expect(overviewSection).toBeVisible();
+    // Check overlap with welcome section
+    const welcomeSection = page.locator('#welcome');
+    await expect(welcomeSection).toBeVisible();
 
     const dropdownBox = await dropdown.boundingBox();
-    const overviewBox = await overviewSection.boundingBox();
+    const welcomeBox = await welcomeSection.boundingBox();
 
-    if (dropdownBox && overviewBox) {
-      // The bottom of the dropdown should be below the top of the overview section
+    if (dropdownBox && welcomeBox) {
+      // The bottom of the dropdown should be below the top of the welcome section
       // to prove it's overlapping visually and not clipped.
-      expect(dropdownBox.y + dropdownBox.height).toBeGreaterThan(overviewBox.y);
+      expect(dropdownBox.y + dropdownBox.height).toBeGreaterThan(welcomeBox.y);
     }
   });
 
@@ -32,9 +33,11 @@ test.describe('Search Dropdown Layout', () => {
     await page.goto('/es/');
     const searchInput = page.getByPlaceholder('Buscá marca, modelo o tipo…');
     await expect(searchInput).toBeVisible();
-    await searchInput.fill('Tesla');
+    await page.waitForTimeout(1500); // Wait for entrance animations to settle
+    await searchInput.click(); // Focus it
+    await searchInput.fill('o');
 
-    const dropdown = page.locator('ul:has-text("Tesla")').first();
+    const dropdown = page.locator('ul:has-text("Porsche")').first();
     await expect(dropdown).toBeVisible();
 
     // If it's not clipped, it should have a reasonable height

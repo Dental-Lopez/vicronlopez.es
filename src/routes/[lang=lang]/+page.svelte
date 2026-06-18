@@ -36,7 +36,7 @@
   <ReviewsSection locale={data.locale} />
   <section class="py-lg border-y border-outline-variant/10 bg-surface-container-low/10">
     <div class="max-w-7xl mx-auto px-8">
-      <PaymentMethods t={data.t.payments} />
+      <PaymentMethods t={data.t.payments} center={true} />
     </div>
   </section>
   <ContactSection locale={data.locale} />

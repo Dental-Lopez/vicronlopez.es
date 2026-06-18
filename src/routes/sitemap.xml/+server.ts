@@ -91,18 +91,18 @@ export const GET: RequestHandler = async (event) => {
 
   const xml = await response.text();
   
-  // Post-process XML to fix alternates (super-sitemap doesn't translate them in processPaths)
-  let finalXml = xml
-    .replaceAll('/es/about', '/es/sobre-nosotros/')
-    .replaceAll('/es/contact', '/es/contacto/')
-    .replaceAll('/es/sitemap', '/es/mapa-del-sitio/')
-    .replaceAll('/es/legal/privacy', '/es/legal/privacidad/')
-    .replaceAll('/es/legal/terms', '/es/legal/terminos/')
-    .replaceAll('/es/vehicles/', '/es/vehiculos/');
-
-  // Fix trailing slashes in alternates if missing
+  // Fix trailing slashes in alternates first
   // (super-sitemap might generate them without trailing slash for alternates)
-  finalXml = finalXml.replace(/href="([^"]+?\/e[ns]\/[^"]+?)(?<!\/)"/g, 'href="$1/"');
+  let finalXml = xml.replace(/href="([^"]+?\/e[ns]\/[^"]+?)(?<!\/)"/g, 'href="$1/"');
+
+  // Post-process XML to fix alternates (super-sitemap doesn't translate them in processPaths)
+  finalXml = finalXml
+    .replaceAll('/es/about/', '/es/sobre-nosotros/')
+    .replaceAll('/es/contact/', '/es/contacto/')
+    .replaceAll('/es/sitemap/', '/es/mapa-del-sitio/')
+    .replaceAll('/es/legal/privacy/', '/es/legal/privacidad/')
+    .replaceAll('/es/legal/terms/', '/es/legal/terminos/')
+    .replaceAll('/es/vehicles/', '/es/vehiculos/');
 
   const styledXml = finalXml.replace(
     '<?xml version="1.0" encoding="UTF-8" ?>',

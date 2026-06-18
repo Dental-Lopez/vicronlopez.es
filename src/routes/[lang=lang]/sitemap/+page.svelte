@@ -5,6 +5,7 @@
   import { jsonLdScript } from '@/lib/jsonLd';
   import { absoluteUrl } from '@/business';
   import { webPage, breadcrumb } from '@/seo/schema';
+  import { getAllVehicles } from '@/lib/vehicles';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
@@ -28,7 +29,20 @@
     })
   );
 
-  const sitemapData = $derived([
+  interface SitemapLink {
+    href: string;
+    label: string;
+    indent?: boolean;
+  }
+
+  const activeVehicles = getAllVehicles().filter((v) => v.available);
+  const vehicleLinks: SitemapLink[] = activeVehicles.map((v) => ({
+    href: `/${data.locale}${data.t.nav.links.inventory}${v.slug}/`,
+    label: `${v.brand} ${v.model}`,
+    indent: true,
+  }));
+
+  const sitemapData = $derived<{ title: string; links: SitemapLink[] }[]>([
     {
       title: data.t.sitemap.sections.main,
       links: [
@@ -41,6 +55,7 @@
       title: data.t.sitemap.sections.inventory,
       links: [
         { href: `/${data.locale}${data.t.nav.links.inventory}`, label: data.t.nav.inventory },
+        ...vehicleLinks,
       ],
     },
     {
@@ -80,7 +95,7 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {#each sitemapData as section, idx}
+      {#each sitemapData as section, idx (section.title)}
         <div
           class="bg-surface-container-low/40 backdrop-blur-sm border border-outline-variant/20 rounded-3xl p-8 animate-in fade-in slide-in-from-bottom-12 duration-1000"
           style="transition-delay: {idx * 100}ms"
@@ -89,13 +104,17 @@
             {section.title}
           </h2>
           <ul class="space-y-4">
-            {#each section.links as link}
-              <li>
+            {#each section.links as link (link.href)}
+              <li class={link.indent ? 'pl-6' : ''}>
                 <a
                   href={link.href}
                   class="group flex items-center text-body-md text-on-surface-variant hover:text-primary transition-all duration-300"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-outline-variant mr-3 group-hover:bg-primary group-hover:scale-125 transition-all"></span>
+                  {#if link.indent}
+                    <span class="w-1 h-1 rounded-full bg-outline-variant/60 mr-2.5 group-hover:bg-primary/60 transition-all"></span>
+                  {:else}
+                    <span class="w-1.5 h-1.5 rounded-full bg-outline-variant mr-3 group-hover:bg-primary group-hover:scale-125 transition-all"></span>
+                  {/if}
                   {link.label}
                 </a>
               </li>
