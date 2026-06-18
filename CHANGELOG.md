@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Centered supported payment methods on the homepage by introducing a `center` prop to `PaymentMethods` component and passing it as `true` in `src/routes/[lang=lang]/+page.svelte`.
+- Updated `robots.txt` dynamic endpoint to reference the production domain `https://www.vicronlopez.es/` for the `Sitemap` path declaration.
 
 ### Fixed
 

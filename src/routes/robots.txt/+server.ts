@@ -1,13 +1,12 @@
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = ({ url }) => {
-  const origin = url.origin;
+export const GET: RequestHandler = () => {
   
   const body = [
     'User-agent: *',
     'Allow: /',
     '',
-    `Sitemap: ${origin}/sitemap.xml`
+    'Sitemap: https://www.vicronlopez.es/sitemap.xml'
   ].join('\n');
 
   return new Response(body, {
