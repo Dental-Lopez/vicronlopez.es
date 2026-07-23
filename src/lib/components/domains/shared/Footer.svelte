@@ -103,7 +103,7 @@
         <p class="text-on-surface-variant/70 font-body text-body-sm">
           Developed by
           <a
-            href="https://hlorenzoz.com/en/"
+            href="https://hlorenzoz.com/"
             target="_blank"
             rel="noopener"
             class="hover:text-primary hover:underline transition-colors"
