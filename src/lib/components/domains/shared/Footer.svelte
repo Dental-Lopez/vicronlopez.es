@@ -96,10 +96,23 @@
 
     <!-- Copyright and Legal Links -->
     <div class="pt-lg border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-md">
-      <p class="text-on-surface-variant font-body text-body-sm">
-        {t.footer.copyright}
-      </p>
-      
+      <div class="flex flex-col items-center md:items-start gap-xs">
+        <p class="text-on-surface-variant font-body text-body-sm">
+          {t.footer.copyright}
+        </p>
+        <p class="text-on-surface-variant/70 font-body text-body-sm">
+          Developed by
+          <a
+            href="https://hlorenzoz.com/en/"
+            target="_blank"
+            rel="noopener"
+            class="hover:text-primary hover:underline transition-colors"
+          >
+            Lorenzoz Agency
+          </a>
+        </p>
+      </div>
+
       <div class="flex items-center gap-md font-body text-body-sm">
         <a href={`/${locale}${t.nav.links.privacy}`} class="text-on-surface-variant hover:text-primary transition-colors">
           {t.footer.privacy}
