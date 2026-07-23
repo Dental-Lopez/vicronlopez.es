@@ -136,6 +136,8 @@ export const en = {
     elegantTitle: 'Elegant and powerful',
     elegantText: 'Do you want to rent a luxury car, but still don\'t know which one? Check out our rental cars. You can also contact us directly and our experts will find the most perfect vehicle for your character and style.',
     rentCta: 'Rent a luxury car 📅',
+    developedBy: 'Developed by',
+    agencyCredit: 'Lorenzoz Agency: web development agency and business solutions',
   },
   theme: {
     toggleLight: 'Switch to light mode',

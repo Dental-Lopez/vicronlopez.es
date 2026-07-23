@@ -101,12 +101,14 @@
           {t.footer.copyright}
         </p>
         <p class="text-on-surface-variant/70 font-body text-body-sm">
-          Developed by
+          {t.footer.developedBy}
           <a
             href="https://hlorenzoz.com/"
             target="_blank"
             rel="noopener"
-            class="hover:text-primary hover:underline transition-colors"
+            title={t.footer.agencyCredit}
+            aria-label={t.footer.agencyCredit}
+            class="underline hover:text-primary transition-colors"
           >
             Lorenzoz Agency
           </a>

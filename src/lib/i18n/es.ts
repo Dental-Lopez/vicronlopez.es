@@ -138,6 +138,8 @@ export const es: Dictionary = {
     elegantTitle: 'Elegante y potente',
     elegantText: '¿Quieres alquilar un coche de lujo, pero aún no sabes cuál? Consulta nuestros coches de alquiler. También puede contactarnos directamente y nuestros expertos se adaptarán al automóvil más perfecto para su carácter y estilo.',
     rentCta: 'Alquilar un coche de lujo 📅',
+    developedBy: 'Desarrollado por',
+    agencyCredit: 'Lorenzoz Agency: agencia de desarrollo web y soluciones para negocios',
   },
   theme: {
     toggleLight: 'Cambiar a modo claro',
