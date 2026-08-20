@@ -48,16 +48,16 @@
         <img
           src="/vicronlopez/vicron-horizontal-claro.svg"
           alt=""
-          width="292"
-          height="104"
+          width="836"
+          height="233"
           fetchpriority="high"
           class="block dark:hidden h-10 md:h-12 w-auto"
         />
         <img
           src="/vicronlopez/vicron-horizontal-oscuro.svg"
           alt=""
-          width="292"
-          height="104"
+          width="827"
+          height="235"
           fetchpriority="high"
           class="hidden dark:block h-10 md:h-12 w-auto"
         />
