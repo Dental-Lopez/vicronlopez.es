@@ -46,18 +46,18 @@
       <!-- Logo -->
       <a href={`/${locale}/`} class="shrink-0" aria-label="Vicron Lopez - Home">
         <img
-          src="/vicronlopez/vicron-horizontal-claro.png"
+          src="/vicronlopez/vicron-horizontal-claro.svg"
           alt=""
-          width="913"
-          height="325"
+          width="292"
+          height="104"
           fetchpriority="high"
           class="block dark:hidden h-10 md:h-12 w-auto"
         />
         <img
-          src="/vicronlopez/vicron-horizontal-oscuro.png"
+          src="/vicronlopez/vicron-horizontal-oscuro.svg"
           alt=""
-          width="913"
-          height="325"
+          width="292"
+          height="104"
           fetchpriority="high"
           class="hidden dark:block h-10 md:h-12 w-auto"
         />
