@@ -2,7 +2,7 @@ const CACHE_NAME = "aerodrive-v1";
 const ASSETS_TO_CACHE = [
   "/",
   "/manifest.webmanifest",
-  "/favicon.png",
+  "/favicon.svg",
   "/icons/icon-48.webp",
   "/icons/icon-72.webp",
   "/icons/icon-96.webp",
