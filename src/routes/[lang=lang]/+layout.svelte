@@ -47,7 +47,9 @@
     
     let title = t.site.name;
     let description = t.site.description;
-    let image = absoluteUrl(business.logoPath);
+    let image = absoluteUrl(business.ogImage.path);
+    // Only the default card has known dimensions; vehicle photos vary.
+    let imageMeta: typeof business.ogImage | null = business.ogImage;
     let type = 'website';
 
     // 1. Vehicle Detail Page
@@ -56,6 +58,7 @@
       title = `${v.brand} ${v.model} ${v.year} | ${t.site.name}`;
       description = `${t.vehicleDetail.forRent}: ${v.brand} ${v.model} - ${t.vehicleDetail.specifications}`;
       image = absoluteUrl(v.image);
+      imageMeta = null;
     }
     // 2. About Page
     else if (path.includes('/about') || path.includes('/sobre-nosotros')) {
@@ -95,6 +98,7 @@
       title,
       description,
       image,
+      imageMeta,
       url: absoluteUrl(path),
       type,
       locale: locale === 'es' ? 'es_ES' : 'en_US',
@@ -141,6 +145,12 @@
   <meta property="og:type" content={ogMetadata.type} />
   <meta property="og:url" content={ogMetadata.url} />
   <meta property="og:image" content={ogMetadata.image} />
+  <meta property="og:image:alt" content={ogMetadata.title} />
+  {#if ogMetadata.imageMeta}
+    <meta property="og:image:type" content={ogMetadata.imageMeta.type} />
+    <meta property="og:image:width" content={String(ogMetadata.imageMeta.width)} />
+    <meta property="og:image:height" content={String(ogMetadata.imageMeta.height)} />
+  {/if}
   <meta property="og:site_name" content={data.t.site.name} />
   <meta property="og:locale" content={ogMetadata.locale} />
   <meta property="og:locale:alternate" content={ogMetadata.alternateLocale} />

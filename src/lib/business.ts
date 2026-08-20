@@ -11,7 +11,10 @@
 export const business = {
   url: 'https://www.vicronlopez.es',
   name: 'Vicron Lopez',
-  logoPath: '/icons/icon-512x512.png',
+  /** Square brand logo, used as the Organization logo in JSON-LD. */
+  logoPath: '/og/logo-512.png',
+  /** 1200x630 social card served as the default og:image. */
+  ogImage: { path: '/og/og-default.png', width: 1200, height: 630, type: 'image/png' },
   email: 'info@vicronlopez.es',
   phone: { e164: '+34698133249', display: '+34 698 13 32 49' },
   whatsapp: '34698133249',
