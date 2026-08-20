@@ -1,27 +1,27 @@
-const CACHE_NAME = 'aerodrive-v1';
+const CACHE_NAME = "aerodrive-v1";
 const ASSETS_TO_CACHE = [
-  '/',
-  '/manifest.webmanifest',
-  '/favicon.svg',
-  '/icons/icon-48.webp',
-  '/icons/icon-72.webp',
-  '/icons/icon-96.webp',
-  '/icons/icon-144.webp',
-  '/icons/icon-192.webp',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  "/",
+  "/manifest.webmanifest",
+  "/favicon.png",
+  "/icons/icon-48.webp",
+  "/icons/icon-72.webp",
+  "/icons/icon-96.webp",
+  "/icons/icon-144.webp",
+  "/icons/icon-192.webp",
+  "/icons/icon-192x192.png",
+  "/icons/icon-512x512.png",
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS_TO_CACHE);
-    })
+    }),
   );
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
@@ -29,14 +29,14 @@ self.addEventListener('activate', (event) => {
           if (cacheName !== CACHE_NAME) {
             return caches.delete(cacheName);
           }
-        })
+        }),
       );
-    })
+    }),
   );
   self.clients.claim();
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
   if (!event.request.url.startsWith(self.location.origin)) return;
 
   event.respondWith(
@@ -46,8 +46,8 @@ self.addEventListener('fetch', (event) => {
         if (
           response &&
           response.status === 200 &&
-          (event.request.url.includes('/_astro/') || 
-           event.request.url.match(/\.(webp|svg|png|jpg|jpeg|js|css)$/))
+          (event.request.url.includes("/_astro/") ||
+            event.request.url.match(/\.(webp|svg|png|jpg|jpeg|js|css)$/))
         ) {
           const responseToCache = response.clone();
           caches.open(CACHE_NAME).then((cache) => {
@@ -56,6 +56,6 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       });
-    })
+    }),
   );
 });
