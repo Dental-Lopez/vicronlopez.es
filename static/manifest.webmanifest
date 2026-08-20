@@ -1,7 +1,7 @@
 {
-  "name": "Autos Rental & Sale",
-  "short_name": "Autos",
-  "description": "Find your perfect vehicle — rent or buy with confidence.",
+  "name": "Vicron Lopez",
+  "short_name": "Vicron",
+  "description": "Encontrá tu vehículo ideal y alquilá con confianza.",
   "start_url": "/es/",
   "scope": "/",
   "display": "standalone",
@@ -21,8 +21,8 @@
       "purpose": "any"
     },
     {
-      "src": "/icons/icon-192x192.png",
-      "sizes": "192x192",
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }

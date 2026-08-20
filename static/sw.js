@@ -1,4 +1,4 @@
-const CACHE_NAME = "aerodrive-v1";
+const CACHE_NAME = "vicronlopez-v2";
 const ASSETS_TO_CACHE = [
   "/",
   "/manifest.webmanifest",
