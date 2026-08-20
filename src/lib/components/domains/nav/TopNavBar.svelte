@@ -44,12 +44,23 @@
   <nav class="bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/30">
     <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
       <!-- Logo -->
-      <a
-        href={`/${locale}/`}
-        class="text-xl md:text-2xl font-black tracking-tighter font-display text-primary shrink-0"
-        aria-label="Vicron Lopez - Home"
-      >
-        Vicron Lopez
+      <a href={`/${locale}/`} class="shrink-0" aria-label="Vicron Lopez - Home">
+        <img
+          src="/vicronlopez/vicron-horizontal-claro.png"
+          alt=""
+          width="913"
+          height="325"
+          fetchpriority="high"
+          class="block dark:hidden h-10 md:h-12 w-auto"
+        />
+        <img
+          src="/vicronlopez/vicron-horizontal-oscuro.png"
+          alt=""
+          width="913"
+          height="325"
+          fetchpriority="high"
+          class="hidden dark:block h-10 md:h-12 w-auto"
+        />
       </a>
 
       <!-- Desktop Nav Links -->
